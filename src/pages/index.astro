@@ -1,0 +1,154 @@
+---
+import { apps } from "../data/apps";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Over Tech Apps</title>
+    <meta
+      name="description"
+      content="Official website for Over Tech Apps. Discover apps, privacy policies, support pages, and terms."
+    />
+  </head>
+
+  <body>
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">Over Tech Apps</p>
+        <h1>Useful apps, simple support pages, and clear privacy policies.</h1>
+        <p class="subtitle">
+          This is the official home for apps published by Over Tech Apps.
+        </p>
+      </header>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Apps</h2>
+          <p>Published apps will appear here.</p>
+        </div>
+
+        <div class="grid">
+          {apps.map((app) => (
+            <article class="card">
+              <h3>{app.name}</h3>
+              <p>{app.description}</p>
+              <a href={`/apps/${app.slug}`}>View app</a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <footer>
+        <p>© {new Date().getFullYear()} Over Tech Apps</p>
+        <p>
+          Contact:
+          <a href="mailto:lucasamelin14@gmail.com">lucasamelin14@gmail.com</a>
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+  }
+
+  .page {
+    width: min(1100px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 64px 0 32px;
+  }
+
+  .hero {
+    padding: 80px 0;
+  }
+
+  .eyebrow {
+    color: #38bdf8;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+
+  h1 {
+    max-width: 850px;
+    margin: 0;
+    font-size: clamp(42px, 7vw, 86px);
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+  }
+
+  .subtitle {
+    max-width: 620px;
+    margin-top: 28px;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #cbd5e1;
+  }
+
+  .section {
+    padding: 48px 0;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: end;
+    margin-bottom: 24px;
+  }
+
+  .section-header h2 {
+    margin: 0;
+    font-size: 36px;
+  }
+
+  .section-header p {
+    margin: 0;
+    color: #94a3b8;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    background: rgba(15, 23, 42, 0.75);
+    border-radius: 24px;
+    padding: 24px;
+  }
+
+  .card h3 {
+    margin: 0 0 12px;
+    font-size: 24px;
+  }
+
+  .card p {
+    color: #cbd5e1;
+    line-height: 1.6;
+  }
+
+  a {
+    color: #38bdf8;
+    font-weight: 700;
+  }
+
+  footer {
+    border-top: 1px solid rgba(148, 163, 184, 0.25);
+    margin-top: 48px;
+    padding-top: 24px;
+    color: #94a3b8;
+  }
+</style>

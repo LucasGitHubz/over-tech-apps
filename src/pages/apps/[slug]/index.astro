@@ -1,0 +1,122 @@
+---
+import { apps } from "../../../data/apps";
+
+export function getStaticPaths() {
+  return apps.map((app) => ({
+    params: { slug: app.slug },
+    props: { app },
+  }));
+}
+
+const { app } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{app.name} | Over Tech Apps</title>
+    <meta name="description" content={app.description} />
+  </head>
+
+  <body>
+    <main class="page">
+      <a class="back" href="/">← Back to all apps</a>
+
+      <section class="hero">
+        <p class="eyebrow">Over Tech Apps</p>
+        <h1>{app.name}</h1>
+        <p class="subtitle">{app.description}</p>
+
+        <div class="actions">
+          {app.appStoreUrl ? (
+            <a class="button" href={app.appStoreUrl}>View on the App Store</a>
+          ) : (
+            <span class="button muted">App Store link coming soon</span>
+          )}
+        </div>
+      </section>
+
+      <section class="links">
+        <a href={`/apps/${app.slug}/privacy`}>Privacy Policy</a>
+        <a href={`/apps/${app.slug}/support`}>Support</a>
+        <a href={`/apps/${app.slug}/terms`}>Terms of Use</a>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+  }
+
+  .page {
+    width: min(900px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 48px 0;
+  }
+
+  .back,
+  a {
+    color: #38bdf8;
+    font-weight: 700;
+  }
+
+  .hero {
+    padding: 80px 0 48px;
+  }
+
+  .eyebrow {
+    color: #38bdf8;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(44px, 8vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+  }
+
+  .subtitle {
+    max-width: 620px;
+    margin-top: 24px;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #cbd5e1;
+  }
+
+  .actions {
+    margin-top: 32px;
+  }
+
+  .button {
+    display: inline-flex;
+    border-radius: 999px;
+    background: #38bdf8;
+    color: #020617;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+
+  .button.muted {
+    background: rgba(148, 163, 184, 0.2);
+    color: #cbd5e1;
+  }
+
+  .links {
+    display: grid;
+    gap: 16px;
+    border-top: 1px solid rgba(148, 163, 184, 0.25);
+    padding-top: 32px;
+  }
+</style>

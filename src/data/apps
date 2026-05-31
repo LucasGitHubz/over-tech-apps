@@ -1,0 +1,10 @@
+export const apps = [
+  {
+    name: "Coming Soon",
+    slug: "coming-soon",
+    description: "Over Tech Apps will list all published apps here soon.",
+    supportEmail: "lucasamelin14@gmail.com",
+    collectsData: false,
+    appStoreUrl: "",
+  },
+];
