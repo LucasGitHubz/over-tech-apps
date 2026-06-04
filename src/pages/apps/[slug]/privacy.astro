@@ -37,11 +37,22 @@ const lastUpdated = "May 31, 2026";
 
       <section>
         <h2>Data Collection</h2>
-        {app.collectsData ? (
-          <p>
-            This app may collect information necessary to provide and improve the
-            service. Details may vary depending on the features used.
-          </p>
+
+        {app.privacy.collectsData ? (
+          <>
+            <p>
+              This app may collect information necessary to provide, secure, and improve
+              the service.
+            </p>
+
+            {app.privacy.hasLogin && (
+              <p>
+                This app includes a login or account system. Information such as an email
+                address, user identifier, or authentication-related data may be used to
+                create and manage your account.
+              </p>
+            )}
+          </>
         ) : (
           <p>
             This app does not collect, store, or share personal data from users.
@@ -49,11 +60,45 @@ const lastUpdated = "May 31, 2026";
         )}
       </section>
 
+      {app.privacy.dataTypes.length > 0 && (
+        <section>
+          <h2>Types of Data</h2>
+          <ul>
+            {app.privacy.dataTypes.map((dataType) => (
+              <li>{dataType}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {app.privacy.thirdPartyServices.length > 0 && (
+        <section>
+          <h2>Third-Party Services</h2>
+          <p>
+            This app may use third-party services to provide certain features, authentication,
+            analytics, crash reporting, or backend infrastructure.
+          </p>
+          <ul>
+            {app.privacy.thirdPartyServices.map((service) => (
+              <li>{service}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <section>
-        <h2>Third-Party Services</h2>
+        <h2>Children’s Privacy</h2>
         <p>
-          If third-party services are used in the app, they may process data
-          according to their own privacy policies.
+          This app is not intended to knowingly collect personal information from children
+          unless explicitly stated in the app’s specific features and App Store listing.
+        </p>
+      </section>
+
+      <section>
+        <h2>Changes to This Policy</h2>
+        <p>
+          This Privacy Policy may be updated from time to time. Updates will be published
+          on this page with a new “Last updated” date.
         </p>
       </section>
 
@@ -94,7 +139,8 @@ const lastUpdated = "May 31, 2026";
     margin-top: 40px;
   }
 
-  p {
+  p,
+  li {
     color: #cbd5e1;
     line-height: 1.7;
   }

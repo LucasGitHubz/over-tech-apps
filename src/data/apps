@@ -1,10 +1,16 @@
 export const apps = [
   {
-    name: "Coming Soon",
-    slug: "coming-soon",
-    description: "Over Tech Apps will list all published apps here soon.",
-    supportEmail: "lucasamelin14@gmail.com",
-    collectsData: false,
-    appStoreUrl: "",
+    name: "Qui es-tu",
+    slug: "qui-es-tu",
+    description:
+      "Remplis des questionnaires, seul ou avec des amis, tous plus fun les uns que les autres ! Sélectionne ton univers préféré, réponds aux questions et découvre qui tu es. Avec de nouveaux thèmes chaque semaine, tu n’auras plus jamais peur de t’ennuyer !",
+    supportEmail: "overtechapps@gmail.com",
+    appStoreUrl: "https://apps.apple.com/us/app/qui-es-tu/id6740242586",
+    privacy: {
+      collectsData: false,
+      hasLogin: false,
+      dataTypes: [],
+      thirdPartyServices: [],
+    },
   },
 ];
