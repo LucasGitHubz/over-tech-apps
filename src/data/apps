@@ -13,4 +13,26 @@ export const apps = [
       thirdPartyServices: [],
     },
   },
+  {
+    name: "Loto Nova",
+    slug: "loto-nova",
+    description:
+      "Générez des grilles EuroMillions et Loto, sauvegardez vos tickets, suivez les dates de tirage et retrouvez vos résultats dans un historique clair. Loto Nova vous aide à organiser vos grilles et à suivre vos gains, sans vente de tickets ni jeu d’argent réel.",
+    supportEmail: "overtechapps@gmail.com",
+    appStoreUrl: "",
+    privacy: {
+      collectsData: true,
+      hasLogin: true,
+      dataTypes: [
+        "Email address",
+        "User identifier",
+        "Nickname and avatar preferences",
+        "Saved lottery lines, draw dates, and result history",
+      ],
+      thirdPartyServices: [
+        "Firebase Authentication",
+        "Cloud Firestore",
+      ],
+    },
+  },
 ];
