@@ -20,7 +20,7 @@ export const apps = [
     description:
       "Trouve la paire de running qui correspond vraiment à ton profil. Réponds à quelques questions sur ta pratique, ton terrain, ton volume et tes préférences, puis découvre les chaussures les plus adaptées à ta foulée.",
     supportEmail: "overtechapps@gmail.com",
-    appStoreUrl: "",
+    appStoreUrl: "https://apps.apple.com/fr/app/solemate-run/id6787297750",
     privacy: {
       collectsData: true,
       hasLogin: true,
