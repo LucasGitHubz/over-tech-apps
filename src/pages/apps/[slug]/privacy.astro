@@ -86,6 +86,18 @@ const lastUpdated = "May 31, 2026";
         </section>
       )}
 
+      {app.privacy.hasLogin && (
+        <section>
+          <h2>Account and Data Deletion</h2>
+          <p>
+            You can delete your account from the Profile tab in the app or submit a request
+            without the app using our <a href={`/apps/${app.slug}/remove-account`}>
+              account deletion page
+            </a>.
+          </p>
+        </section>
+      )}
+
       <section>
         <h2>Children’s Privacy</h2>
         <p>

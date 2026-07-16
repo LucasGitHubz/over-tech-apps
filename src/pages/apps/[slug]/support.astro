@@ -45,6 +45,9 @@ const { app } = Astro.props;
         <ul>
           <li><a href={`/apps/${app.slug}/privacy`}>Privacy Policy</a></li>
           <li><a href={`/apps/${app.slug}/terms`}>Terms of Use</a></li>
+          {app.privacy.hasLogin && (
+            <li><a href={`/apps/${app.slug}/remove-account`}>Delete your account</a></li>
+          )}
         </ul>
       </section>
     </main>
