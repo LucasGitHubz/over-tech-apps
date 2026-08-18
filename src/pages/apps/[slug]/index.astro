@@ -57,10 +57,40 @@ const { app } = Astro.props;
     </div>
   </section>
 )}
+      {app.affiliate?.enabled && (
+        <section class="brands-section">
+          <div class="section-header">
+            <h2>Marques couvertes</h2>
+            <p>
+              {app.name} compare les chaussures de {app.affiliate.brands.length}
+              {" "}marques de running, sur la base de leurs caractéristiques
+              techniques et de votre profil de coureur.
+            </p>
+          </div>
+
+          <ul class="brands">
+            {app.affiliate.brands.map((brand) => <li>{brand}</li>)}
+          </ul>
+
+          <p class="disclosure">
+            Certains liens vers les boutiques des marques et de nos revendeurs
+            partenaires sont des liens d'affiliation, signalés par la mention
+            « Lien affilié » — sans surcoût pour vous, et sans influence sur les
+            recommandations.{" "}
+            <a href={`/apps/${app.slug}/affiliation`}>En savoir plus</a>
+          </p>
+        </section>
+      )}
+
       <section class="links">
         <a href={`/apps/${app.slug}/privacy`}>Privacy Policy</a>
         <a href={`/apps/${app.slug}/support`}>Support</a>
         <a href={`/apps/${app.slug}/terms`}>Terms of Use</a>
+        {app.affiliate?.enabled && (
+          <a href={`/apps/${app.slug}/affiliation`}>
+            Liens d'affiliation &amp; transparence
+          </a>
+        )}
         {app.privacy.hasLogin && (
           <a href={`/apps/${app.slug}/remove-account`}>Delete your account</a>
         )}
@@ -141,6 +171,37 @@ const { app } = Astro.props;
     gap: 16px;
     border-top: 1px solid rgba(148, 163, 184, 0.25);
     padding-top: 32px;
+  }
+
+  .brands-section {
+    padding: 48px 0;
+    border-top: 1px solid rgba(148, 163, 184, 0.25);
+  }
+
+  .brands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 0 0 24px;
+    list-style: none;
+  }
+
+  .brands li {
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    background: rgba(15, 23, 42, 0.75);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 14px;
+    color: #cbd5e1;
+  }
+
+  .disclosure {
+    max-width: 680px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #94a3b8;
   }
   .screenshots {
   padding: 48px 0;

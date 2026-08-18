@@ -1,0 +1,181 @@
+---
+import { apps } from "../../../data/apps";
+
+export function getStaticPaths() {
+  return apps
+    .filter((app) => app.affiliate?.enabled)
+    .map((app) => ({
+      params: { slug: app.slug },
+      props: { app },
+    }));
+}
+
+const { app } = Astro.props;
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Liens d'affiliation & transparence | {app.name}</title>
+    <meta
+      name="description"
+      content={`Politique de transparence sur les liens d'affiliation de ${app.name} : réseaux partenaires, marques concernées et indépendance éditoriale.`}
+    />
+  </head>
+
+  <body>
+    <main class="page">
+      <a href={`/apps/${app.slug}`}>← Back to {app.name}</a>
+
+      <h1>Liens d'affiliation &amp; transparence</h1>
+      <p class="muted">Dernière mise à jour : {app.affiliate.lastUpdated}</p>
+
+      <section>
+        <h2>Le principe, en clair</h2>
+        <p>
+          {app.name} (l'application iOS et ce site) contient des liens vers les
+          boutiques en ligne officielles des marques de chaussures et vers des
+          revendeurs partenaires. Certains de ces liens sont des
+          <strong> liens d'affiliation</strong> : si vous effectuez un achat après
+          avoir cliqué, Over Tech Apps perçoit une commission de la part du
+          marchand, <strong>sans aucun surcoût pour vous</strong> — le prix est
+          exactement le même que si vous vous rendiez directement sur le site.
+        </p>
+        <p>
+          Ces commissions financent le développement et la maintenance de
+          l'application.
+        </p>
+      </section>
+
+      <section>
+        <h2>Comment les reconnaître</h2>
+        <p>
+          Dans l'application, les liens rémunérés sont signalés par la mention
+          « <strong>Lien affilié</strong> », affichée avant le clic,
+          conformément à la réglementation française sur la transparence de la
+          publicité et de l'influence commerciale (loi n° 2023-451 du 9 juin
+          2023, code de la consommation).
+        </p>
+      </section>
+
+      <section>
+        <h2>Indépendance éditoriale</h2>
+        <p>
+          Les recommandations de {app.name} sont calculées uniquement à partir
+          de votre profil de coureur (pratique, terrain, volume, préférences) et
+          des caractéristiques techniques des chaussures.
+          <strong>
+            Les scores de compatibilité, les classements et les notes ne sont
+            jamais influencés par les commissions d'affiliation</strong
+          > : une chaussure sans lien rémunéré est traitée exactement comme une
+          chaussure avec lien rémunéré.
+        </p>
+      </section>
+
+      <section>
+        <h2>Réseaux d'affiliation partenaires</h2>
+        <p>
+          Les liens rémunérés transitent par les plateformes d'affiliation
+          suivantes (selon la marque ou le marchand concerné) :
+        </p>
+        <ul>
+          {app.affiliate.networks.map((network) => <li>{network}</li>)}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Marques et marchands concernés</h2>
+        <p>
+          Les liens peuvent rediriger vers les boutiques officielles des marques
+          référencées dans l'application, ou vers des revendeurs spécialisés
+          lorsqu'une marque ne dispose pas de programme d'affiliation en France
+          :
+        </p>
+        <ul class="brands">
+          {app.affiliate.brands.map((brand) => <li>{brand}</li>)}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Données personnelles et suivi</h2>
+        <p>
+          Le suivi des achats est effectué par les réseaux d'affiliation
+          eux-mêmes, via un identifiant de clic anonyme et un cookie déposé sur
+          le site du marchand après votre clic. {app.name} n'utilise pas
+          d'identifiant publicitaire (IDFA) et ne transmet aucune donnée
+          personnelle (nom, e-mail, profil) aux marchands ni aux réseaux
+          d'affiliation. Pour en savoir plus, consultez la
+          <a href={`/apps/${app.slug}/privacy`}> politique de confidentialité</a
+          >.
+        </p>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>
+          Une question sur cette politique ?
+          <a href={`mailto:${app.supportEmail}`}>{app.supportEmail}</a>
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+  }
+
+  .page {
+    width: min(820px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 48px 0;
+  }
+
+  h1 {
+    font-size: clamp(38px, 6vw, 64px);
+    letter-spacing: -0.05em;
+    margin: 56px 0 8px;
+  }
+
+  h2 {
+    margin-top: 40px;
+  }
+
+  p,
+  li {
+    color: #cbd5e1;
+    line-height: 1.7;
+  }
+
+  .muted {
+    color: #94a3b8;
+  }
+
+  a {
+    color: #38bdf8;
+    font-weight: 700;
+  }
+
+  .brands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .brands li {
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    background: rgba(15, 23, 42, 0.75);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+</style>
