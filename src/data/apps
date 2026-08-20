@@ -2,25 +2,62 @@ export const apps = [
   {
     name: "Qui es-tu",
     slug: "qui-es-tu",
+    category: "Quiz",
     description:
       "Remplis des questionnaires, seul ou avec des amis, tous plus fun les uns que les autres ! Sélectionne ton univers préféré, réponds aux questions et découvre qui tu es. Avec de nouveaux thèmes chaque semaine, tu n’auras plus jamais peur de t’ennuyer !",
     supportEmail: "overtechapps@gmail.com",
     appStoreUrl: "https://apps.apple.com/us/app/qui-es-tu/id6740242586",
+    accent: {
+      from: "#c084fc",
+      to: "#818cf8",
+      contrast: "#0f0a1a",
+      rgb: "192, 132, 252",
+    },
     privacy: {
       collectsData: false,
       hasLogin: false,
       dataTypes: [],
       thirdPartyServices: [],
     },
-    screenshots: [],
+    // [back, front] indexes into screenshots for the detail-page hero
+    heroScreenshots: [3, 0],
+    screenshots: [
+      {
+        src: "/apps/qui-es-tu/themes.jpg",
+        title: "Choisis ton univers",
+        description: "Animaux, villes, dieux… de nouveaux thèmes chaque semaine.",
+      },
+      {
+        src: "/apps/qui-es-tu/question.jpg",
+        title: "Réponds aux questions",
+        description: "Des quizz fun à faire seul ou avec des amis.",
+      },
+      {
+        src: "/apps/qui-es-tu/analyse.jpg",
+        title: "L'analyse fait le reste",
+        description: "Tes réponses sont passées au crible en quelques secondes.",
+      },
+      {
+        src: "/apps/qui-es-tu/resultat.jpg",
+        title: "Découvre qui tu es",
+        description: "Un résultat illustré et son portrait, à partager autour de toi.",
+      },
+    ],
   },
   {
     name: "SoleMate Run",
     slug: "solemate-run",
+    category: "Running",
     description:
       "Trouve la paire de running qui correspond vraiment à ton profil. Réponds à quelques questions sur ta pratique, ton terrain, ton volume et tes préférences, puis découvre les chaussures les plus adaptées à ta foulée.",
     supportEmail: "overtechapps@gmail.com",
     appStoreUrl: "https://apps.apple.com/fr/app/solemate-run/id6787297750",
+    accent: {
+      from: "#d9f942",
+      to: "#a3e635",
+      contrast: "#131803",
+      rgb: "217, 249, 66",
+    },
     privacy: {
       collectsData: true,
       hasLogin: true,
@@ -64,6 +101,8 @@ export const apps = [
         "Saucony",
       ],
     },
+    // [back, front] indexes into screenshots for the detail-page hero
+    heroScreenshots: [2, 0],
     screenshots: [
       {
         src: "/apps/solemate-run/home.png",
