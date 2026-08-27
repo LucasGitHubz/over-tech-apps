@@ -116,11 +116,14 @@ export const apps = [
       dataTypes: [
         "Account information such as email address or user identifier",
         "Profile preferences such as shoe size, terrain type, running usage, and language",
-        "App activity necessary to provide app features and save user preferences",
+        "Saved favorites, questionnaire answers, recommendation results, and personal shoe ratings",
+        "App activity and analytics necessary to provide and improve app features",
       ],
       thirdPartyServices: [
-        "Authentication provider",
-        "Backend service or cloud database",
+        "Google Firebase Authentication and Google Sign-In for account access",
+        "Google Cloud Firestore for account data and synchronization",
+        "Google Firebase Analytics for aggregated app usage analytics",
+        "Google Firebase Remote Config for app configuration and update notices",
       ],
     },
     affiliate: {

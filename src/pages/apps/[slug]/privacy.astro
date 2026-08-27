@@ -9,7 +9,7 @@ export function getStaticPaths() {
 }
 
 const { app } = Astro.props;
-const lastUpdated = "May 31, 2026";
+const lastUpdated = app.slug === "solemate-run" ? "August 27, 2026" : "May 31, 2026";
 ---
 
 <html lang="en">
@@ -87,15 +87,75 @@ const lastUpdated = "May 31, 2026";
       )}
 
       {app.privacy.hasLogin && (
-        <section>
-          <h2>Account and Data Deletion</h2>
-          <p>
-            You can delete your account from the Profile tab in the app or submit a request
-            without the app using our <a href={`/apps/${app.slug}/remove-account`}>
-              account deletion page
-            </a>.
-          </p>
-        </section>
+        app.slug === "solemate-run" ? (
+          <>
+            <section>
+              <h2>Data Retention</h2>
+              <p>
+                Account-linked personal data is retained while your account is active and
+                only for as long as necessary to provide account access, synchronization,
+                app features, security, and support.
+              </p>
+              <p>
+                When you delete your account in the app, deletion of the account and its
+                associated personal data is processed immediately after confirmation.
+                Requests submitted by email are processed within 30 days after account
+                ownership has been verified.
+              </p>
+              <p>The deletion covers:</p>
+              <ul>
+                <li>Your authentication account and user identifier.</li>
+                <li>Your email address and profile name.</li>
+                <li>
+                  Your runner profile and preferences, including shoe size, terrain,
+                  running usage, and language.
+                </li>
+                <li>Your saved favorite shoes.</li>
+                <li>Your saved questionnaire answers and latest recommendation results.</li>
+                <li>Your personal shoe ratings.</li>
+              </ul>
+              <p>
+                Aggregated or de-identified analytics, aggregate shoe popularity counts,
+                and aggregate community rating data that cannot be linked back to your
+                deleted account may be retained. Information may also be retained only for
+                as long as required for security, fraud prevention, or legal compliance.
+              </p>
+            </section>
+
+            <section>
+              <h2>How to Request Account and Data Deletion</h2>
+              <p>You can permanently delete your account and associated personal data:</p>
+              <ol>
+                <li>
+                  <strong>In the app:</strong> sign in, open the <strong>Profile</strong> tab,
+                  select <strong>Delete account</strong>, and confirm the deletion. For
+                  security, you may be asked to sign in again.
+                </li>
+                <li>
+                  <strong>Without the app:</strong> email Over Tech Apps at <a
+                    href={`mailto:${app.supportEmail}`}>{app.supportEmail}</a
+                  > from the address linked to your account. Include “SoleMate Run” and
+                  clearly request deletion of your account and associated data.
+                </li>
+              </ol>
+              <p>
+                Full instructions are also available on our <a
+                  href={`/apps/${app.slug}/remove-account`}>account deletion page</a
+                >.
+              </p>
+            </section>
+          </>
+        ) : (
+          <section>
+            <h2>Account and Data Deletion</h2>
+            <p>
+              You can delete your account from the Profile tab in the app or submit a request
+              without the app using our <a href={`/apps/${app.slug}/remove-account`}>
+                account deletion page
+              </a>.
+            </p>
+          </section>
+        )
       )}
 
       <section>
@@ -164,5 +224,9 @@ const lastUpdated = "May 31, 2026";
   a {
     color: #38bdf8;
     font-weight: 700;
+  }
+
+  strong {
+    color: #f8fafc;
   }
 </style>
