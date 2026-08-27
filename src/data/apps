@@ -45,6 +45,58 @@ export const apps = [
     ],
   },
   {
+    name: "AnimalDex",
+    slug: "animaldex",
+    category: "Wildlife",
+    description:
+      "Scanne les animaux autour de toi, identifie l'espèce en quelques secondes et ajoute-la à ton Dex sous forme de carte à collectionner. Gagne de l'XP, débloque des badges et grimpe au classement des meilleurs explorateurs.",
+    supportEmail: "overtechapps@gmail.com",
+    accent: {
+      from: "#fbbf24",
+      to: "#f97316",
+      contrast: "#1c0a02",
+      rgb: "249, 115, 22",
+    },
+    privacy: {
+      collectsData: true,
+      hasLogin: true,
+      dataTypes: [
+        "Account information such as email address or user identifier",
+        "Capture data such as identified species, photos you take, XP, badges, and capture locations",
+        "App activity necessary to provide app features and sync your collection",
+      ],
+      thirdPartyServices: [
+        "Authentication provider",
+        "Backend service or cloud database",
+        "Advertising network (rewarded ads)",
+      ],
+    },
+    // [back, front] indexes into screenshots for the detail-page hero
+    heroScreenshots: [1, 0],
+    screenshots: [
+      {
+        src: "/apps/animaldex/scan.png",
+        title: "Scanne et identifie",
+        description: "Pointe l'appareil photo, l'espèce est identifiée en quelques secondes.",
+      },
+      {
+        src: "/apps/animaldex/dex.png",
+        title: "Remplis ton Dex",
+        description: "Chaque espèce devient une carte à collectionner, du commun au légendaire.",
+      },
+      {
+        src: "/apps/animaldex/ranking.png",
+        title: "Grimpe au classement",
+        description: "Compare tes découvertes aux explorateurs du monde entier.",
+      },
+      {
+        src: "/apps/animaldex/profile.png",
+        title: "Ton profil d'explorateur",
+        description: "XP, badges, carte des captures : toute ta progression au même endroit.",
+      },
+    ],
+  },
+  {
     name: "SoleMate Run",
     slug: "solemate-run",
     category: "Running",
