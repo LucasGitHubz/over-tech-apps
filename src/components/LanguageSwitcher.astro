@@ -1,0 +1,132 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<div class:list={["language-switcher", { compact }]} role="group" aria-label="Language / Langue">
+  <button type="button" data-language="en" aria-label="Switch to English" title="English">
+    <span aria-hidden="true">🇬🇧</span>
+    <span class="language-code">EN</span>
+  </button>
+  <button type="button" data-language="fr" aria-label="Passer en français" title="Français">
+    <span aria-hidden="true">🇫🇷</span>
+    <span class="language-code">FR</span>
+  </button>
+</div>
+
+<script is:inline>
+  (() => {
+    const storageKey = "over-tech-language";
+
+    const applyLanguage = (language) => {
+      const selected = language === "fr" ? "fr" : "en";
+      document.documentElement.lang = selected;
+
+      document.querySelectorAll("[data-en][data-fr]").forEach((element) => {
+        const value = element.getAttribute(`data-${selected}`);
+        if (value !== null) element.textContent = value;
+      });
+
+      document.querySelectorAll("[data-language]").forEach((button) => {
+        const active = button.getAttribute("data-language") === selected;
+        button.setAttribute("aria-pressed", String(active));
+      });
+
+      try {
+        localStorage.setItem(storageKey, selected);
+      } catch {}
+    };
+
+    const initialize = () => {
+      let initialLanguage = "en";
+      try {
+        initialLanguage = localStorage.getItem(storageKey) ||
+          (navigator.language.toLowerCase().startsWith("fr") ? "fr" : "en");
+      } catch {
+        initialLanguage = navigator.language.toLowerCase().startsWith("fr") ? "fr" : "en";
+      }
+
+      applyLanguage(initialLanguage);
+
+      document.querySelectorAll("[data-language]").forEach((button) => {
+        button.addEventListener("click", () => applyLanguage(button.getAttribute("data-language")));
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initialize, { once: true });
+    } else {
+      initialize();
+    }
+  })();
+</script>
+
+<style>
+  .language-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 4px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.66);
+    backdrop-filter: blur(14px);
+  }
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 34px;
+    padding: 6px 10px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: #64748b;
+    font: 700 11px/1 "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+  }
+
+  button span:first-child {
+    font-size: 17px;
+    line-height: 1;
+  }
+
+  button:hover {
+    color: #e2e8f0;
+  }
+
+  button[aria-pressed="true"] {
+    background: rgba(226, 232, 240, 0.12);
+    color: #f8fafc;
+    box-shadow: inset 0 0 0 1px rgba(226, 232, 240, 0.08);
+  }
+
+  button:focus-visible {
+    outline: 2px solid #d9f942;
+    outline-offset: 2px;
+  }
+
+  .compact .language-code {
+    display: none;
+  }
+
+  .compact button {
+    padding-inline: 8px;
+  }
+
+  @media (max-width: 580px) {
+    .language-code {
+      display: none;
+    }
+
+    button {
+      padding-inline: 8px;
+    }
+  }
+</style>

@@ -1,0 +1,1116 @@
+---
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+import { apps } from "../data/apps";
+
+const app = apps.find((item) => item.slug === "solemate-run");
+
+if (!app) {
+  throw new Error("SoleMate Run app data is missing");
+}
+
+const year = new Date().getFullYear();
+const appStoreUrl = app.appStoreUrl;
+const playStoreUrl = app.playStoreUrl;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SoleMate Run — Find your perfect running shoes</title>
+    <meta
+      name="description"
+      content="Find running shoes made for your stride. Download SoleMate Run free on the App Store and Google Play."
+    />
+    <meta name="theme-color" content="#080b08" />
+    <meta name="apple-itunes-app" content="app-id=6787297750" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SoleMate Run — Find your perfect running shoes" />
+    <meta
+      property="og:description"
+      content="A few questions. A smarter shortlist. Download SoleMate Run free on iOS and Android."
+    />
+    <meta property="og:image" content="/apps/solemate-run/results.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="site-shell">
+      <div class="ambient ambient-one" aria-hidden="true"></div>
+      <div class="ambient ambient-two" aria-hidden="true"></div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="/" aria-label="Over Tech Apps home">
+          <span class="brand-mark" aria-hidden="true">
+            <span class="sole">SOLE</span><span class="mate">MATE</span>
+          </span>
+          <span class="brand-run">RUN</span>
+        </a>
+
+        <div class="nav-actions">
+          <a
+            class="nav-download"
+            href="#download"
+            data-en="Download the app"
+            data-fr="Télécharger l’app"
+          >Download the app</a>
+          <LanguageSwitcher />
+        </div>
+      </nav>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="availability">
+              <span class="pulse" aria-hidden="true"></span>
+              <span data-en="Now on iOS & Android" data-fr="Disponible sur iOS & Android"
+                >Now on iOS & Android</span
+              >
+            </div>
+
+            <h1>
+              <span data-en="Your next run starts with the" data-fr="Votre prochaine course commence avec la"
+                >Your next run starts with the</span
+              >
+              <span class="lime" data-en="right pair." data-fr="bonne paire.">right pair.</span>
+            </h1>
+
+            <p
+              class="hero-description"
+              data-en="Tell us how you run. SoleMate compares your terrain, goals and preferences to help you find shoes that truly fit your profile."
+              data-fr="Dites-nous comment vous courez. SoleMate compare votre terrain, vos objectifs et vos préférences pour vous aider à trouver les chaussures vraiment adaptées à votre profil."
+            >
+              Tell us how you run. SoleMate compares your terrain, goals and preferences to help you
+              find shoes that truly fit your profile.
+            </p>
+
+            <div id="download" class="store-buttons" aria-label="Download SoleMate Run">
+              <a class="store-button apple" href={appStoreUrl} target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 32 38" aria-hidden="true">
+                  <path fill="currentColor" d="M26.8 20.2c0-4.1 3.4-6.1 3.6-6.2-1.9-2.8-4.9-3.2-5.9-3.2-2.5-.3-4.9 1.5-6.2 1.5-1.3 0-3.3-1.5-5.4-1.4-2.8 0-5.4 1.6-6.8 4.1-2.9 5-.7 12.5 2.1 16.6 1.4 2 3.1 4.3 5.3 4.2 2.1-.1 2.9-1.4 5.5-1.4 2.6 0 3.3 1.4 5.5 1.3 2.3 0 3.8-2.1 5.2-4.1 1.6-2.3 2.2-4.6 2.3-4.7-.1 0-5.2-2-5.2-6.7ZM22.9 8.2c1.2-1.4 2-3.4 1.8-5.4-1.7.1-3.8 1.2-5 2.6-1.1 1.3-2.1 3.3-1.8 5.2 1.9.2 3.8-1 5-2.4Z" />
+                </svg>
+                <span>
+                  <small data-en="Download on the" data-fr="Télécharger dans l’">Download on the</small>
+                  <strong>App Store</strong>
+                </span>
+              </a>
+
+              <a class="store-button google" href={playStoreUrl} target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 40 44" aria-hidden="true">
+                  <path fill="#00d6ff" d="M3.4 2.8c-.8.9-1.3 2.2-1.3 3.8v30.8c0 1.6.5 2.9 1.3 3.8l.2.2L22.1 23v-.4L3.6 2.6l-.2.2Z" />
+                  <path fill="#ffdc00" d="m28.2 29.1-6.1-6.5v.4l6.1-6.1.2.1 7.2 4.1c2.1 1.2 2.1 3.2 0 4.4l-7.2 4.1-.2-.5Z" />
+                  <path fill="#ff3a44" d="m28.4 29.6-6.3-6.6L3.4 41.2c1.4 1.5 3.6 1.7 6.1.3l18.9-11.9Z" />
+                  <path fill="#00ef78" d="M28.4 16.9 9.5 2.1C7 .7 4.8.9 3.4 2.8l18.7 19.8 6.3-5.7Z" />
+                </svg>
+                <span>
+                  <small data-en="GET IT ON" data-fr="DISPONIBLE SUR">GET IT ON</small>
+                  <strong>Google Play</strong>
+                </span>
+              </a>
+            </div>
+
+            <p class="free-note">
+              <span class="check" aria-hidden="true">✓</span>
+              <span data-en="Free to download · Ready in minutes" data-fr="Téléchargement gratuit · Prêt en quelques minutes"
+                >Free to download · Ready in minutes</span
+              >
+            </p>
+          </div>
+
+          <div class="hero-visual" aria-label="SoleMate Run app preview">
+            <div class="orbit orbit-one" aria-hidden="true"></div>
+            <div class="orbit orbit-two" aria-hidden="true"></div>
+            <div class="match-card card-left" aria-hidden="true">
+              <span>01</span>
+              <strong data-en="Your profile" data-fr="Votre profil">Your profile</strong>
+            </div>
+            <div class="phone phone-back">
+              <img src="/apps/solemate-run/quiz.png" alt="SoleMate Run runner profile quiz" />
+            </div>
+            <div class="phone phone-front">
+              <img src="/apps/solemate-run/results.png" alt="Personalized SoleMate Run shoe recommendations" />
+            </div>
+            <div class="match-card card-right" aria-hidden="true">
+              <span class="match-score">94%</span>
+              <strong data-en="Great match" data-fr="Excellent match">Great match</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="proof" aria-label="SoleMate benefits">
+          <div class="proof-item">
+            <span class="proof-number">16</span>
+            <span data-en="running brands compared" data-fr="marques de running comparées">running brands compared</span>
+          </div>
+          <div class="proof-divider" aria-hidden="true"></div>
+          <div class="proof-item">
+            <span class="proof-number">100%</span>
+            <span data-en="personalized to your profile" data-fr="personnalisé selon votre profil">personalized to your profile</span>
+          </div>
+          <div class="proof-divider" aria-hidden="true"></div>
+          <div class="proof-item">
+            <span class="proof-number">2 min</span>
+            <span data-en="to get your shortlist" data-fr="pour obtenir votre sélection">to get your shortlist</span>
+          </div>
+        </section>
+
+        <section class="how-it-works">
+          <div class="section-heading">
+            <p class="section-kicker" data-en="BUILT AROUND YOU" data-fr="PENSÉ POUR VOUS">BUILT AROUND YOU</p>
+            <h2 data-en="Less guessing. Better running." data-fr="Moins d’hésitation. Plus de plaisir à courir.">
+              Less guessing. Better running.
+            </h2>
+          </div>
+
+          <div class="steps">
+            <article>
+              <span class="step-number">01</span>
+              <div class="step-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 19v-4m0-6V5m8 14v-6m0-6V5m8 14v-2m0-6V5M1 15h6M9 7h6m2 10h6" /></svg>
+              </div>
+              <h3 data-en="Set your profile" data-fr="Créez votre profil">Set your profile</h3>
+              <p
+                data-en="Share your terrain, distance, pace and what matters most to you."
+                data-fr="Indiquez votre terrain, votre distance, votre allure et ce qui compte le plus pour vous."
+              >Share your terrain, distance, pace and what matters most to you.</p>
+            </article>
+
+            <article>
+              <span class="step-number">02</span>
+              <div class="step-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1" /><circle cx="12" cy="12" r="4" /></svg>
+              </div>
+              <h3 data-en="Get smart matches" data-fr="Découvrez vos meilleurs matchs">Get smart matches</h3>
+              <p
+                data-en="See a clear, ranked selection instead of scrolling through hundreds of shoes."
+                data-fr="Obtenez une sélection claire et classée au lieu de parcourir des centaines de chaussures."
+              >See a clear, ranked selection instead of scrolling through hundreds of shoes.</p>
+            </article>
+
+            <article>
+              <span class="step-number">03</span>
+              <div class="step-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" /></svg>
+              </div>
+              <h3 data-en="Choose with confidence" data-fr="Choisissez en confiance">Choose with confidence</h3>
+              <p
+                data-en="Compare your favorites, understand each match and pick your next pair."
+                data-fr="Comparez vos favoris, comprenez chaque résultat et choisissez votre prochaine paire."
+              >Compare your favorites, understand each match and pick your next pair.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="app-preview">
+          <div class="section-heading preview-heading">
+            <div>
+              <p class="section-kicker" data-en="INSIDE THE APP" data-fr="DANS L’APPLICATION">INSIDE THE APP</p>
+              <h2 data-en="Made for runners, not shoe experts." data-fr="Pensée pour les coureurs, pas les experts en chaussures.">
+                Made for runners, not shoe experts.
+              </h2>
+            </div>
+            <p
+              class="section-description"
+              data-en="Everything you need to move from “maybe” to your best match."
+              data-fr="Tout ce qu’il faut pour passer de « peut-être » à votre meilleur choix."
+            >Everything you need to move from “maybe” to your best match.</p>
+          </div>
+
+          <div class="screenshots">
+            <figure>
+              <img src="/apps/solemate-run/home.png" alt="SoleMate Run home screen" loading="lazy" />
+              <figcaption data-en="Start your match" data-fr="Lancez votre recherche">Start your match</figcaption>
+            </figure>
+            <figure>
+              <img src="/apps/solemate-run/quiz.png" alt="SoleMate Run profile quiz" loading="lazy" />
+              <figcaption data-en="Build your runner profile" data-fr="Créez votre profil de coureur">Build your runner profile</figcaption>
+            </figure>
+            <figure>
+              <img src="/apps/solemate-run/results.png" alt="SoleMate Run shoe matches" loading="lazy" />
+              <figcaption data-en="See your best matches" data-fr="Découvrez vos meilleurs matchs">See your best matches</figcaption>
+            </figure>
+            <figure>
+              <img src="/apps/solemate-run/favorites.png" alt="SoleMate Run saved shoes" loading="lazy" />
+              <figcaption data-en="Save your favorites" data-fr="Gardez vos favoris">Save your favorites</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="final-cta">
+          <div class="final-glow" aria-hidden="true"></div>
+          <p class="section-kicker" data-en="YOUR NEXT PAIR IS WAITING" data-fr="VOTRE PROCHAINE PAIRE VOUS ATTEND">
+            YOUR NEXT PAIR IS WAITING
+          </p>
+          <h2 data-en="Run in shoes chosen for you." data-fr="Courez avec des chaussures choisies pour vous.">
+            Run in shoes chosen for you.
+          </h2>
+          <p
+            data-en="Download SoleMate Run and get your personalized shortlist today."
+            data-fr="Téléchargez SoleMate Run et obtenez votre sélection personnalisée dès aujourd’hui."
+          >Download SoleMate Run and get your personalized shortlist today.</p>
+
+          <div class="store-buttons centered">
+            <a class="store-button apple" href={appStoreUrl} target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 32 38" aria-hidden="true">
+                <path fill="currentColor" d="M26.8 20.2c0-4.1 3.4-6.1 3.6-6.2-1.9-2.8-4.9-3.2-5.9-3.2-2.5-.3-4.9 1.5-6.2 1.5-1.3 0-3.3-1.5-5.4-1.4-2.8 0-5.4 1.6-6.8 4.1-2.9 5-.7 12.5 2.1 16.6 1.4 2 3.1 4.3 5.3 4.2 2.1-.1 2.9-1.4 5.5-1.4 2.6 0 3.3 1.4 5.5 1.3 2.3 0 3.8-2.1 5.2-4.1 1.6-2.3 2.2-4.6 2.3-4.7-.1 0-5.2-2-5.2-6.7ZM22.9 8.2c1.2-1.4 2-3.4 1.8-5.4-1.7.1-3.8 1.2-5 2.6-1.1 1.3-2.1 3.3-1.8 5.2 1.9.2 3.8-1 5-2.4Z" />
+              </svg>
+              <span><small data-en="Download on the" data-fr="Télécharger dans l’">Download on the</small><strong>App Store</strong></span>
+            </a>
+            <a class="store-button google" href={playStoreUrl} target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 40 44" aria-hidden="true">
+                <path fill="#00d6ff" d="M3.4 2.8c-.8.9-1.3 2.2-1.3 3.8v30.8c0 1.6.5 2.9 1.3 3.8l.2.2L22.1 23v-.4L3.6 2.6l-.2.2Z" />
+                <path fill="#ffdc00" d="m28.2 29.1-6.1-6.5v.4l6.1-6.1.2.1 7.2 4.1c2.1 1.2 2.1 3.2 0 4.4l-7.2 4.1-.2-.5Z" />
+                <path fill="#ff3a44" d="m28.4 29.6-6.3-6.6L3.4 41.2c1.4 1.5 3.6 1.7 6.1.3l18.9-11.9Z" />
+                <path fill="#00ef78" d="M28.4 16.9 9.5 2.1C7 .7 4.8.9 3.4 2.8l18.7 19.8 6.3-5.7Z" />
+              </svg>
+              <span><small data-en="GET IT ON" data-fr="DISPONIBLE SUR">GET IT ON</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <a class="footer-brand" href="/">Over Tech Apps</a>
+        <p>© {year} SoleMate Run</p>
+        <div class="footer-links">
+          <a href="/apps/solemate-run/privacy" data-en="Privacy" data-fr="Confidentialité">Privacy</a>
+          <a href="/apps/solemate-run/support" data-en="Support" data-fr="Assistance">Support</a>
+          <a href="/apps/solemate-run/terms" data-en="Terms" data-fr="Conditions">Terms</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+    background: #080b08;
+  }
+
+  :global(body) {
+    margin: 0;
+    color: #f5f7f0;
+    background: #080b08;
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :global(::selection) {
+    color: #111508;
+    background: #d9f942;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .site-shell {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .ambient {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(12px);
+  }
+
+  .ambient-one {
+    top: -400px;
+    right: -260px;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(217, 249, 66, 0.16), transparent 67%);
+  }
+
+  .ambient-two {
+    top: 560px;
+    left: -360px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.08), transparent 68%);
+  }
+
+  .nav,
+  main,
+  footer {
+    position: relative;
+    z-index: 1;
+    width: min(1200px, calc(100% - 48px));
+    margin-inline: auto;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px 0;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: "Manrope", sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  .brand-mark {
+    display: inline-flex;
+    font-size: 21px;
+  }
+
+  .mate {
+    color: #d9f942;
+  }
+
+  .brand-run {
+    padding: 4px 7px;
+    border-radius: 6px;
+    color: #0c1104;
+    background: #d9f942;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .nav-download {
+    padding: 11px 18px;
+    border-radius: 999px;
+    color: #0d1106;
+    background: #d9f942;
+    font-size: 14px;
+    font-weight: 700;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .nav-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(217, 249, 66, 0.2);
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(460px, 0.85fr);
+    gap: 56px;
+    align-items: center;
+    min-height: 690px;
+    padding: 72px 0 96px;
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 660px;
+  }
+
+  .availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 8px 13px;
+    border: 1px solid rgba(217, 249, 66, 0.22);
+    border-radius: 999px;
+    color: #d9f942;
+    background: rgba(217, 249, 66, 0.06);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d9f942;
+    box-shadow: 0 0 0 5px rgba(217, 249, 66, 0.1), 0 0 15px rgba(217, 249, 66, 0.8);
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  h1 {
+    max-width: 760px;
+    font-size: clamp(48px, 6.2vw, 82px);
+    line-height: 1.01;
+    letter-spacing: -0.06em;
+    text-wrap: balance;
+  }
+
+  h1 span {
+    display: inline;
+  }
+
+  .lime {
+    color: #d9f942;
+  }
+
+  .hero-description {
+    max-width: 610px;
+    margin: 26px 0 0;
+    color: #9ca394;
+    font-size: 18px;
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  .store-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 34px;
+    scroll-margin-top: 40px;
+  }
+
+  .store-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 188px;
+    min-height: 62px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 14px;
+    color: #fff;
+    background: #0c0d0b;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .store-button:hover {
+    transform: translateY(-3px);
+    border-color: rgba(217, 249, 66, 0.55);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .store-button svg {
+    width: 28px;
+    height: 34px;
+    flex: 0 0 auto;
+  }
+
+  .store-button.google svg {
+    width: 31px;
+  }
+
+  .store-button span {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+  }
+
+  .store-button small {
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .store-button strong {
+    font-family: "Manrope", sans-serif;
+    font-size: 19px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+  }
+
+  .free-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0 0;
+    color: #71796b;
+    font-size: 13px;
+  }
+
+  .check {
+    display: grid;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    color: #d9f942;
+    background: rgba(217, 249, 66, 0.1);
+    font-size: 11px;
+  }
+
+  .hero-visual {
+    position: relative;
+    min-height: 560px;
+    isolation: isolate;
+  }
+
+  .hero-visual::before {
+    content: "";
+    position: absolute;
+    inset: 14% 4% 6%;
+    z-index: -2;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217, 249, 66, 0.24), rgba(217, 249, 66, 0.04) 52%, transparent 70%);
+    filter: blur(10px);
+  }
+
+  .orbit {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    z-index: -1;
+    border: 1px solid rgba(217, 249, 66, 0.16);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .orbit-one {
+    width: 450px;
+    height: 450px;
+  }
+
+  .orbit-two {
+    width: 340px;
+    height: 340px;
+  }
+
+  .phone {
+    position: absolute;
+    overflow: hidden;
+    border: 5px solid #252a20;
+    border-radius: 36px;
+    background: #111;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.62);
+  }
+
+  .phone img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .phone-back {
+    top: 64px;
+    left: 16px;
+    width: 230px;
+    aspect-ratio: 1284 / 2778;
+    transform: rotate(-8deg);
+    opacity: 0.84;
+  }
+
+  .phone-front {
+    top: 2px;
+    right: 22px;
+    width: 272px;
+    aspect-ratio: 1284 / 2778;
+    transform: rotate(5deg);
+    border-color: #33392a;
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.72), 0 0 70px rgba(217, 249, 66, 0.08);
+  }
+
+  .match-card {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 140px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    background: rgba(16, 20, 14, 0.82);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.36);
+    backdrop-filter: blur(16px);
+  }
+
+  .match-card span {
+    color: #d9f942;
+    font-family: "Manrope", sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .match-card strong {
+    color: #e8ece2;
+    font-size: 13px;
+  }
+
+  .card-left {
+    top: 24%;
+    left: -25px;
+  }
+
+  .card-right {
+    right: -12px;
+    bottom: 14%;
+  }
+
+  .card-right .match-score {
+    font-size: 24px;
+    letter-spacing: -0.04em;
+  }
+
+  .proof {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+    margin-bottom: 132px;
+    padding: 28px 36px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .proof-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #858d7d;
+    font-size: 13px;
+  }
+
+  .proof-number {
+    color: #f5f7f0;
+    font-family: "Manrope", sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+  }
+
+  .proof-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .how-it-works,
+  .app-preview {
+    padding-bottom: 132px;
+  }
+
+  .section-heading {
+    max-width: 740px;
+    margin-bottom: 48px;
+  }
+
+  .section-kicker {
+    margin: 0 0 14px;
+    color: #d9f942;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+  }
+
+  h2 {
+    font-size: clamp(34px, 4.4vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .steps article {
+    position: relative;
+    min-height: 290px;
+    padding: 34px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
+    transition: transform 0.25s, border-color 0.25s;
+  }
+
+  .steps article:hover {
+    transform: translateY(-5px);
+    border-color: rgba(217, 249, 66, 0.24);
+  }
+
+  .step-number {
+    position: absolute;
+    top: 24px;
+    right: 26px;
+    color: rgba(255, 255, 255, 0.16);
+    font-family: "Manrope", sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .step-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 46px;
+    border-radius: 15px;
+    color: #d9f942;
+    background: rgba(217, 249, 66, 0.09);
+  }
+
+  .step-icon svg {
+    width: 25px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .steps h3 {
+    margin-bottom: 10px;
+    font-size: 21px;
+    letter-spacing: -0.035em;
+  }
+
+  .steps p {
+    margin: 0;
+    color: #858d7d;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .preview-heading {
+    display: grid;
+    grid-template-columns: 1fr minmax(220px, 310px);
+    gap: 64px;
+    align-items: end;
+    max-width: none;
+  }
+
+  .section-description {
+    margin: 0;
+    color: #858d7d;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .screenshots {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .screenshots figure {
+    margin: 0;
+  }
+
+  .screenshots img {
+    display: block;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 26px;
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.32);
+  }
+
+  .screenshots figure:nth-child(even) {
+    transform: translateY(32px);
+  }
+
+  .screenshots figcaption {
+    padding: 14px 7px 0;
+    color: #8e9687;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .final-cta {
+    position: relative;
+    margin: 38px 0 110px;
+    padding: 86px 40px;
+    overflow: hidden;
+    border: 1px solid rgba(217, 249, 66, 0.17);
+    border-radius: 34px;
+    background: linear-gradient(150deg, rgba(217, 249, 66, 0.09), rgba(255, 255, 255, 0.025));
+    text-align: center;
+  }
+
+  .final-glow {
+    position: absolute;
+    right: 10%;
+    bottom: -280px;
+    left: 10%;
+    height: 420px;
+    border-radius: 50%;
+    background: rgba(217, 249, 66, 0.16);
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .final-cta > *:not(.final-glow) {
+    position: relative;
+  }
+
+  .final-cta h2 {
+    max-width: 750px;
+    margin-inline: auto;
+  }
+
+  .final-cta > p:not(.section-kicker) {
+    margin: 18px auto 0;
+    color: #8f9788;
+    font-size: 17px;
+  }
+
+  .store-buttons.centered {
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  footer {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 0 42px;
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+    color: #656d60;
+    font-size: 13px;
+  }
+
+  footer p {
+    margin: 0;
+  }
+
+  .footer-brand {
+    color: #aeb5a8;
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+
+  .footer-links a:hover {
+    color: #d9f942;
+  }
+
+  @media (max-width: 980px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding-top: 54px;
+    }
+
+    .hero-copy {
+      max-width: 780px;
+    }
+
+    .hero-visual {
+      width: min(590px, 100%);
+      margin-inline: auto;
+    }
+
+    .proof {
+      margin-top: 20px;
+      margin-bottom: 100px;
+    }
+
+    .proof-item {
+      flex-direction: column;
+      gap: 3px;
+      text-align: center;
+    }
+
+    .steps article {
+      padding: 28px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .nav,
+    main,
+    footer {
+      width: min(100% - 32px, 1200px);
+    }
+
+    .nav-download {
+      display: none;
+    }
+
+    .hero {
+      min-height: 0;
+      padding: 46px 0 72px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 14vw, 66px);
+    }
+
+    .hero-description {
+      font-size: 17px;
+    }
+
+    .hero-visual {
+      min-height: 490px;
+      transform: scale(0.9);
+      transform-origin: center top;
+      margin-bottom: -45px;
+    }
+
+    .proof {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 30px 22px;
+    }
+
+    .proof-divider {
+      width: 70px;
+      height: 1px;
+      margin-inline: auto;
+    }
+
+    .steps {
+      grid-template-columns: 1fr;
+    }
+
+    .steps article {
+      min-height: 250px;
+    }
+
+    .preview-heading {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .screenshots {
+      display: flex;
+      gap: 16px;
+      width: calc(100% + 16px);
+      overflow-x: auto;
+      padding: 6px 16px 24px 0;
+      scroll-snap-type: x mandatory;
+    }
+
+    .screenshots figure {
+      flex: 0 0 74%;
+      scroll-snap-align: start;
+    }
+
+    .screenshots figure:nth-child(even) {
+      transform: none;
+    }
+
+    .final-cta {
+      margin-bottom: 72px;
+      padding: 64px 22px;
+    }
+
+    footer {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .footer-links {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .brand-mark {
+      font-size: 18px;
+    }
+
+    .hero {
+      padding-top: 34px;
+    }
+
+    .store-buttons {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .store-button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .hero-visual {
+      min-height: 435px;
+      transform: scale(0.79);
+      width: 126%;
+      margin-left: -13%;
+      margin-bottom: -90px;
+    }
+
+    .phone-back {
+      left: 9%;
+      width: 210px;
+    }
+
+    .phone-front {
+      right: 8%;
+      width: 242px;
+    }
+
+    .card-left {
+      left: 1%;
+    }
+
+    .card-right {
+      right: 0;
+    }
+
+    .proof {
+      margin-bottom: 88px;
+    }
+
+    .how-it-works,
+    .app-preview {
+      padding-bottom: 96px;
+    }
+
+    .section-heading {
+      margin-bottom: 34px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

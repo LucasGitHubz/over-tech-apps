@@ -1,4 +1,5 @@
 ---
+import LanguageSwitcher from "../../../components/LanguageSwitcher.astro";
 import { apps } from "../../../data/apps";
 
 export function getStaticPaths() {
@@ -44,23 +45,29 @@ const accentVars = `--accent-from: ${app.accent.from}; --accent-to: ${app.accent
             <span class="logo">OT</span>
             <span class="wordmark">Over Tech Apps</span>
           </a>
-          <a class="back" href="/">← All apps</a>
+          <div class="nav-actions">
+            <a class="back" href="/" data-en="← All apps" data-fr="← Toutes les apps">← All apps</a>
+            <LanguageSwitcher />
+          </div>
         </nav>
 
         <header class="hero">
           <div class="hero-copy">
-            <p class="eyebrow">iOS · {app.category}</p>
+            <p class="eyebrow">{app.playStoreUrl ? "iOS · Android" : "iOS"} · {app.category}</p>
             <h1>
               {nameLead && <>{nameLead}{" "}</>}<span class="gradient-text">{nameAccent}</span>
             </h1>
-            <p class="subtitle">{app.description}</p>
+            <p class="subtitle" data-en={app.descriptionEn ?? app.description} data-fr={app.description}>{app.descriptionEn ?? app.description}</p>
             <div class="ctas">
               {app.appStoreUrl ? (
-                <a class="cta-primary" href={app.appStoreUrl}> View on the App Store</a>
+                <a class="cta-primary" href={app.appStoreUrl} target="_blank" rel="noopener noreferrer" data-en="View on the App Store" data-fr="Voir sur l’App Store">View on the App Store</a>
               ) : (
-                <span class="cta-primary muted">App Store link coming soon</span>
+                <span class="cta-primary muted" data-en="App Store link coming soon" data-fr="Lien App Store bientôt disponible">App Store link coming soon</span>
               )}
-              <a class="cta-ghost" href={`mailto:${app.supportEmail}`}>Support</a>
+              {app.playStoreUrl && (
+                <a class="cta-primary" href={app.playStoreUrl} target="_blank" rel="noopener noreferrer" data-en="Get it on Google Play" data-fr="Disponible sur Google Play">Get it on Google Play</a>
+              )}
+              <a class="cta-ghost" href={`mailto:${app.supportEmail}`} data-en="Support" data-fr="Assistance">Support</a>
             </div>
           </div>
           {app.screenshots.length > 1 && (
@@ -238,6 +245,12 @@ const accentVars = `--accent-from: ${app.accent.from}; --accent-to: ${app.accent
 
   .back:hover {
     color: #e2e8f0;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
 
   .hero {
@@ -611,6 +624,20 @@ const accentVars = `--accent-from: ${app.accent.from}; --accent-to: ${app.accent
     .brands-grid {
       grid-template-columns: 1fr;
       gap: 28px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .wordmark {
+      display: none;
+    }
+
+    .nav-actions {
+      gap: 10px;
+    }
+
+    .back {
+      font-size: 13px;
     }
   }
 </style>

@@ -1,4 +1,5 @@
 ---
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
 import { apps } from "../data/apps";
 
 const featuredSlug = "solemate-run";
@@ -43,50 +44,58 @@ const year = new Date().getFullYear();
             <span class="wordmark">Over Tech Apps</span>
           </a>
           <div class="nav-links">
-            <a class="nav-apps" href="#apps">Apps</a>
-            <a class="nav-contact" href="mailto:overtechapps@gmail.com">Contact</a>
+            <a class="nav-apps" href="#apps" data-en="Apps" data-fr="Applications">Apps</a>
+            <a class="nav-contact" href="mailto:overtechapps@gmail.com" data-en="Contact" data-fr="Nous contacter">Contact</a>
+            <LanguageSwitcher />
           </div>
         </nav>
 
         <header class="hero">
           <p class="eyebrow"><span class="dot"></span>Over Tech Apps</p>
-          <h1>Useful apps, built with <span class="gradient-text">care and clarity</span>.</h1>
-          <p class="subtitle">
+          <h1>
+            <span data-en="Useful apps, built with" data-fr="Des apps utiles, conçues avec">Useful apps, built with</span>
+            <span class="gradient-text" data-en="care and clarity." data-fr="soin et clarté.">care and clarity.</span>
+          </h1>
+          <p
+            class="subtitle"
+            data-en="The official home for apps published by Over Tech Apps — with simple support pages, honest privacy policies, and clear terms."
+            data-fr="Le site officiel des applications publiées par Over Tech Apps — avec une assistance simple, des politiques de confidentialité transparentes et des conditions claires."
+          >
             The official home for apps published by Over Tech Apps — with simple
             support pages, honest privacy policies, and clear terms.
           </p>
           <div class="ctas">
-            <a class="cta-primary" href="#apps">Discover the apps <span class="arrow">→</span></a>
-            <a class="cta-ghost" href="mailto:overtechapps@gmail.com">Get in touch</a>
+            <a class="cta-primary" href="#apps"><span data-en="Discover the apps" data-fr="Découvrir les apps">Discover the apps</span> <span class="arrow">→</span></a>
+            <a class="cta-ghost" href="mailto:overtechapps@gmail.com" data-en="Get in touch" data-fr="Nous contacter">Get in touch</a>
           </div>
         </header>
 
         <section id="apps" class="apps">
           <div class="section-header">
             <h2>Apps</h2>
-            <p>Published on the App Store</p>
+            <p data-en="Available on iOS and Android" data-fr="Disponibles sur iOS et Android">Available on iOS and Android</p>
           </div>
 
           {homeApps.map((app) => (
             <a
               class="featured"
-              href={`/apps/${app.slug}`}
+              href={app.slug === featuredSlug ? "/solemate-run" : `/apps/${app.slug}`}
               style={`--accent-from: ${app.accent.from}; --accent-to: ${app.accent.to}; --accent-rgb: ${app.accent.rgb};`}
             >
               <div class="featured-copy">
                 <div class="featured-meta">
-                  {app.slug === featuredSlug && <span class="pill-featured">Featured</span>}
-                  <span class="platform">iOS · {app.category}</span>
+                  {app.slug === featuredSlug && <span class="pill-featured" data-en="Featured" data-fr="À la une">Featured</span>}
+                  <span class="platform">{app.playStoreUrl ? "iOS · Android" : "iOS"} · {app.category}</span>
                 </div>
                 <h3>{app.name}</h3>
-                <p class="featured-description">{app.description}</p>
+                <p class="featured-description" data-en={app.descriptionEn ?? app.description} data-fr={app.description}>{app.descriptionEn ?? app.description}</p>
                 {app.affiliate?.enabled && (
                   <div class="chips">
                     {shownBrands.map((brand) => <span class="chip">{brand}</span>)}
                     <span class="chip-more">+{app.affiliate.brands.length - shownBrands.length} more</span>
                   </div>
                 )}
-                <span class="featured-link">View app <span class="arrow">→</span></span>
+                <span class="featured-link"><span data-en={app.slug === featuredSlug ? "Download the app" : "View app"} data-fr={app.slug === featuredSlug ? "Télécharger l’app" : "Voir l’app"}>{app.slug === featuredSlug ? "Download the app" : "View app"}</span> <span class="arrow">→</span></span>
               </div>
               <div class="featured-visual">
                 <img
@@ -97,7 +106,7 @@ const year = new Date().getFullYear();
             </a>
           ))}
 
-          <div class="placeholder">More apps coming soon</div>
+          <div class="placeholder" data-en="More apps coming soon" data-fr="D’autres apps arrivent bientôt">More apps coming soon</div>
         </section>
 
         <footer>
@@ -585,6 +594,17 @@ const year = new Date().getFullYear();
 
     .featured-visual {
       min-height: 380px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .nav-links {
+      gap: 10px;
+    }
+
+    .nav-apps,
+    .nav-contact {
+      display: none;
     }
   }
 </style>

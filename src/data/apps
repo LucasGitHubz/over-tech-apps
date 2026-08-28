@@ -5,6 +5,8 @@ export const apps = [
     category: "Quiz",
     description:
       "Remplis des questionnaires, seul ou avec des amis, tous plus fun les uns que les autres ! Sélectionne ton univers préféré, réponds aux questions et découvre qui tu es. Avec de nouveaux thèmes chaque semaine, tu n’auras plus jamais peur de t’ennuyer !",
+    descriptionEn:
+      "Answer playful questionnaires on your own or with friends. Pick a theme, answer the questions and discover who you are, with new themes added every week.",
     supportEmail: "overtechapps@gmail.com",
     appStoreUrl: "https://apps.apple.com/us/app/qui-es-tu/id6740242586",
     accent: {
@@ -50,6 +52,8 @@ export const apps = [
     category: "Wildlife",
     description:
       "Scanne les animaux autour de toi, identifie l'espèce en quelques secondes et ajoute-la à ton Dex sous forme de carte à collectionner. Gagne de l'XP, débloque des badges et grimpe au classement des meilleurs explorateurs.",
+    descriptionEn:
+      "Scan wildlife around you, identify a species in seconds and add it to your Dex as a collectible card. Earn XP, unlock badges and climb the explorer leaderboard.",
     supportEmail: "overtechapps@gmail.com",
     accent: {
       from: "#fbbf24",
@@ -106,8 +110,12 @@ export const apps = [
     category: "Running",
     description:
       "Trouve la paire de running qui correspond vraiment à ton profil. Réponds à quelques questions sur ta pratique, ton terrain, ton volume et tes préférences, puis découvre les chaussures les plus adaptées à ta foulée.",
+    descriptionEn:
+      "Find the running shoes that truly match your profile. Answer a few questions about your training, terrain, mileage and preferences, then discover the shoes best suited to your stride.",
     supportEmail: "overtechapps@gmail.com",
     appStoreUrl: "https://apps.apple.com/fr/app/solemate-run/id6787297750",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.solemate.android&pcampaignid=web_share",
     accent: {
       from: "#d9f942",
       to: "#a3e635",
