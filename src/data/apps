@@ -182,7 +182,7 @@ export const apps = [
         src: "/apps/solemate-run/quiz.png",
         title: "Un profil vraiment utile",
         description: "Quelques réponses pour comprendre votre foulée.",
-        titleEn: "A profile that works",
+        titleEn: "A profile that helps",
         descriptionEn: "A few answers to understand your stride.",
       },
       {
@@ -196,8 +196,8 @@ export const apps = [
         src: "/apps/solemate-run/favorites.png",
         title: "Gardez les bonnes paires",
         description: "Une shortlist propre avant votre prochain achat.",
-        titleEn: "Find any shoe",
-        descriptionEn: "Explore the complete catalogue in seconds.",
+        titleEn: "Keep the right pairs",
+        descriptionEn: "A clean shortlist before your next purchase.",
       },
       {
         src: "/apps/solemate-run/profile.png",
