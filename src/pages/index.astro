@@ -99,8 +99,12 @@ const year = new Date().getFullYear();
               </div>
               <div class="featured-visual">
                 <img
-                  src={app.screenshots[0].src}
-                  alt={`${app.name} — ${app.screenshots[0].title}`}
+                  src={app.slug === featuredSlug ? "/apps/solemate-run/en/discover.png" : app.screenshots[0].src}
+                  data-src-en={app.slug === featuredSlug ? "/apps/solemate-run/en/discover.png" : app.screenshots[0].src}
+                  data-src-fr={app.screenshots[0].src}
+                  alt={`${app.name} — ${app.screenshots[0].titleEn ?? app.screenshots[0].title}`}
+                  data-alt-en={`${app.name} — ${app.screenshots[0].titleEn ?? app.screenshots[0].title}`}
+                  data-alt-fr={`${app.name} — ${app.screenshots[0].title}`}
                 />
               </div>
             </a>

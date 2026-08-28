@@ -30,6 +30,16 @@ const { compact = false } = Astro.props;
         if (value !== null) element.textContent = value;
       });
 
+      document.querySelectorAll("[data-src-en][data-src-fr]").forEach((element) => {
+        const value = element.getAttribute(`data-src-${selected}`);
+        if (value !== null) element.setAttribute("src", value);
+      });
+
+      document.querySelectorAll("[data-alt-en][data-alt-fr]").forEach((element) => {
+        const value = element.getAttribute(`data-alt-${selected}`);
+        if (value !== null) element.setAttribute("alt", value);
+      });
+
       document.querySelectorAll("[data-language]").forEach((button) => {
         const active = button.getAttribute("data-language") === selected;
         button.setAttribute("aria-pressed", String(active));

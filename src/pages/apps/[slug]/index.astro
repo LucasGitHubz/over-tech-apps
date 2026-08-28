@@ -17,6 +17,17 @@ const nameLead = nameWords.slice(0, -1).join(" ");
 const nameAccent = nameWords[nameWords.length - 1];
 const heroBack = app.screenshots[app.heroScreenshots?.[0] ?? 0];
 const heroFront = app.screenshots[app.heroScreenshots?.[1] ?? 0];
+const englishScreenshotSources = app.slug === "solemate-run"
+  ? [
+      "/apps/solemate-run/en/discover.png",
+      "/apps/solemate-run/en/quiz.png",
+      "/apps/solemate-run/en/results.png",
+      "/apps/solemate-run/en/search.png",
+      "/apps/solemate-run/en/profile.png",
+    ]
+  : app.screenshots.map((screenshot) => screenshot.src);
+const heroBackEn = englishScreenshotSources[app.heroScreenshots?.[0] ?? 0];
+const heroFrontEn = englishScreenshotSources[app.heroScreenshots?.[1] ?? 0];
 const accentVars = `--accent-from: ${app.accent.from}; --accent-to: ${app.accent.to}; --accent-contrast: ${app.accent.contrast}; --accent-rgb: ${app.accent.rgb};`;
 ---
 
@@ -72,8 +83,24 @@ const accentVars = `--accent-from: ${app.accent.from}; --accent-to: ${app.accent
           </div>
           {app.screenshots.length > 1 && (
             <div class="hero-visual">
-              <img class="shot-back" src={heroBack.src} alt={`${app.name} — ${heroBack.title}`} />
-              <img class="shot-front" src={heroFront.src} alt={`${app.name} — ${heroFront.title}`} />
+              <img
+                class="shot-back"
+                src={heroBackEn}
+                data-src-en={heroBackEn}
+                data-src-fr={heroBack.src}
+                alt={`${app.name} — ${heroBack.titleEn ?? heroBack.title}`}
+                data-alt-en={`${app.name} — ${heroBack.titleEn ?? heroBack.title}`}
+                data-alt-fr={`${app.name} — ${heroBack.title}`}
+              />
+              <img
+                class="shot-front"
+                src={heroFrontEn}
+                data-src-en={heroFrontEn}
+                data-src-fr={heroFront.src}
+                alt={`${app.name} — ${heroFront.titleEn ?? heroFront.title}`}
+                data-alt-en={`${app.name} — ${heroFront.titleEn ?? heroFront.title}`}
+                data-alt-fr={`${app.name} — ${heroFront.title}`}
+              />
             </div>
           )}
         </header>
@@ -85,12 +112,19 @@ const accentVars = `--accent-from: ${app.accent.from}; --accent-to: ${app.accent
               <p>Discover the main features of {app.name}.</p>
             </div>
             <div class="shots">
-              {app.screenshots.map((screenshot) => (
+              {app.screenshots.map((screenshot, index) => (
                 <figure>
-                  <img src={screenshot.src} alt={`${app.name} — ${screenshot.title}`} />
+                  <img
+                    src={englishScreenshotSources[index]}
+                    data-src-en={englishScreenshotSources[index]}
+                    data-src-fr={screenshot.src}
+                    alt={`${app.name} — ${screenshot.titleEn ?? screenshot.title}`}
+                    data-alt-en={`${app.name} — ${screenshot.titleEn ?? screenshot.title}`}
+                    data-alt-fr={`${app.name} — ${screenshot.title}`}
+                  />
                   <figcaption>
-                    <strong>{screenshot.title}</strong>
-                    <span>{screenshot.description}</span>
+                    <strong data-en={screenshot.titleEn ?? screenshot.title} data-fr={screenshot.title}>{screenshot.titleEn ?? screenshot.title}</strong>
+                    <span data-en={screenshot.descriptionEn ?? screenshot.description} data-fr={screenshot.description}>{screenshot.descriptionEn ?? screenshot.description}</span>
                   </figcaption>
                 </figure>
               ))}
