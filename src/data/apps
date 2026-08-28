@@ -60,15 +60,19 @@ export const apps = [
     privacy: {
       collectsData: true,
       hasLogin: true,
+      hasPurchases: true,
+      lastUpdated: "August 28, 2026",
       dataTypes: [
         "Account information such as email address or user identifier",
         "Capture data such as identified species, photos you take, XP, badges, and capture locations",
         "App activity necessary to provide app features and sync your collection",
+        "Purchase history and subscription status — never your payment details, which stay with Apple",
       ],
       thirdPartyServices: [
-        "Authentication provider",
-        "Backend service or cloud database",
-        "Advertising network (rewarded ads)",
+        "Sign in with Apple and Google Sign-In, for account access",
+        "Google Firebase — Authentication, Cloud Firestore, Cloud Storage, and Crashlytics — for accounts, data sync, photo storage, and crash reporting",
+        "Google AdMob, for optional rewarded ads",
+        "RevenueCat, for in-app purchase validation and subscription management",
       ],
     },
     // [back, front] indexes into screenshots for the detail-page hero

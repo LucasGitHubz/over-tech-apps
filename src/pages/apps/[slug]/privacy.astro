@@ -9,7 +9,9 @@ export function getStaticPaths() {
 }
 
 const { app } = Astro.props;
-const lastUpdated = app.slug === "solemate-run" ? "August 27, 2026" : "May 31, 2026";
+const lastUpdated =
+  app.privacy.lastUpdated ??
+  (app.slug === "solemate-run" ? "August 27, 2026" : "May 31, 2026");
 ---
 
 <html lang="en">
@@ -86,6 +88,24 @@ const lastUpdated = app.slug === "solemate-run" ? "August 27, 2026" : "May 31, 2
         </section>
       )}
 
+      {app.privacy.hasPurchases && (
+        <section>
+          <h2>Purchases and Subscriptions</h2>
+          <p>
+            This app offers optional in-app purchases and subscriptions. Payments are
+            processed by Apple through the App Store; {app.name} and Over Tech Apps never
+            receive or store your payment card details.
+          </p>
+          <p>
+            To validate purchases and keep your subscription status in sync across your
+            devices, this app uses RevenueCat. RevenueCat receives an app-specific user
+            identifier and your transaction history — never your payment information. You
+            can manage or cancel subscriptions at any time in your App Store account
+            settings.
+          </p>
+        </section>
+      )}
+
       {app.privacy.hasLogin && (
         app.slug === "solemate-run" ? (
           <>
@@ -146,16 +166,47 @@ const lastUpdated = app.slug === "solemate-run" ? "August 27, 2026" : "May 31, 2
             </section>
           </>
         ) : (
-          <section>
-            <h2>Account and Data Deletion</h2>
-            <p>
-              You can delete your account from the Profile tab in the app or submit a request
-              without the app using our <a href={`/apps/${app.slug}/remove-account`}>
-                account deletion page
-              </a>.
-            </p>
-          </section>
+          <>
+            <section>
+              <h2>Data Retention</h2>
+              <p>
+                Account-linked data is kept for as long as your account exists, and is
+                deleted when you delete your account. Limited information may be retained
+                only for as long as required for security, fraud prevention, or legal
+                compliance.
+              </p>
+            </section>
+
+            <section>
+              <h2>Account and Data Deletion</h2>
+              <p>
+                You can delete your account from the Profile tab in the app or submit a request
+                without the app using our <a href={`/apps/${app.slug}/remove-account`}>
+                  account deletion page
+                </a>.
+              </p>
+            </section>
+          </>
         )
+      )}
+
+      {app.privacy.collectsData && (
+        <section>
+          <h2>Your Rights (GDPR)</h2>
+          <p>
+            If you are in the European Economic Area, the United Kingdom, or Switzerland,
+            we process your data on the legal bases of performing our contract with you
+            (providing the app’s features), your consent (for example, for advertising),
+            and our legitimate interest in keeping the service secure.
+          </p>
+          <p>
+            You have the right to access, rectify, erase, and receive a portable copy of
+            your personal data, to restrict or object to its processing, and to withdraw
+            consent at any time. To exercise these rights, use the in-app options where
+            available or contact us at the address below. You may also lodge a complaint
+            with your local data protection authority.
+          </p>
+        </section>
       )}
 
       <section>
