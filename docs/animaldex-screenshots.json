@@ -1,0 +1,118 @@
+{
+  "status": "PROVISIONAL_NOT_CURRENT_BUILD",
+  "reviewedOn": "2026-10-01",
+  "sourceCaptureDate": "2026-09-07",
+  "sourceBuildVersion": null,
+  "sourceRepositoryCommitContainingAssets": "5bd40b9",
+  "currentIOSReference": {
+    "commit": "7f2dbd3",
+    "version": "1.0.2",
+    "build": "16"
+  },
+  "notes": [
+    "Real native SwiftUI screenshots, captured in the DEBUG App Store screenshot mode on iPhone 17 Pro Max / iOS 26.5.",
+    "Demonstration accounts, photos, counters and locations. The camera is supplied with a demonstration photograph.",
+    "No bug screenshots, generated UI or design mockups.",
+    "Web exports resized to 1000px wide, WebP quality 90. No content edited.",
+    "These September captures predate scanner, card and profile changes. The user approved temporary publication of this series on 2026-10-01. Replace all six screens in both locales with the current validated build when the iOS exports are ready.",
+    "Source build version is not recorded in the existing screenshot manifest; do not infer it from the current Xcode settings."
+  ],
+  "pendingScreensPerLocale": [
+    "scan",
+    "dex",
+    "discovery",
+    "profile",
+    "map",
+    "ranking"
+  ],
+  "files": [
+    {
+      "locale": "fr",
+      "source": "AppStore/Screenshots/raw/fr/01-scan.png",
+      "sourceSha256": "e44fa24d4cbaadd329b923f9f895f967d97b4777482b1c809de8c30a207dbae0",
+      "webAsset": "public/apps/animaldex/fr/scan.webp",
+      "webAssetSha256": "b1ebd54f672930b78b2470aa880ec8f00ebe6ef9c7a8ae28edf805c89862d779"
+    },
+    {
+      "locale": "fr",
+      "source": "AppStore/Screenshots/raw/fr/02-dex.png",
+      "sourceSha256": "b00c23d9c3519853c90e0df1cfda3f6d97e529e24359885a73f00ffc86981a9f",
+      "webAsset": "public/apps/animaldex/fr/dex.webp",
+      "webAssetSha256": "fa0a1f6ce5e99a4acf9e5508975f6bb6bccad7603b20997a9fc949cf1bb9d126"
+    },
+    {
+      "locale": "fr",
+      "source": "AppStore/Screenshots/raw/fr/07-discovery.png",
+      "sourceSha256": "d3a6197596f559b83c1271704f575dff81e4d90bb08850f7c54e9298c3f377f3",
+      "webAsset": "public/apps/animaldex/fr/discovery.webp",
+      "webAssetSha256": "342231a2c8b94329ab7e6c2ee322e8a323fea154e850c5276ea9543fdcf92daf"
+    },
+    {
+      "locale": "fr",
+      "source": "AppStore/Screenshots/raw/fr/06-profile.png",
+      "sourceSha256": "f1776be705b34ca42e8d09cf6b4a61859fccc76af3009ef7c6bb157c08d033b5",
+      "webAsset": "public/apps/animaldex/fr/profile.webp",
+      "webAssetSha256": "45eff3af6774ad3f9feb28df5c1be0602546a0db9c88f66fe170b45a4197cf9a"
+    },
+    {
+      "locale": "fr",
+      "source": "AppStore/Screenshots/raw/fr/04-map.png",
+      "sourceSha256": "2299a8cc5b89f9792e28bb34ca22c7b57f100cf1dc309830a95c32d75766548d",
+      "webAsset": "public/apps/animaldex/fr/map.webp",
+      "webAssetSha256": "f700eef34a56b89d1223b288ee3390d6b6db933ef774d5a17f45015ea6a17488"
+    },
+    {
+      "locale": "fr",
+      "source": "AppStore/Screenshots/raw/fr/05-ranks.png",
+      "sourceSha256": "3da4de65da9099a8b8aa45dd9982cf15e9035de5a049898d840ed3b5b6ba1e90",
+      "webAsset": "public/apps/animaldex/fr/ranking.webp",
+      "webAssetSha256": "d55d0d1ca3588e691ca5cff20e391dfb916bebc89ffbfec868eebcae6ae2aa80"
+    },
+    {
+      "locale": "en",
+      "source": "AppStore/Screenshots/raw/en/01-scan.png",
+      "sourceSha256": "900db7d6a7ec95c19be3f910f9651c1447e058c71542f1ec2052f5f37aecf494",
+      "webAsset": "public/apps/animaldex/en/scan.webp",
+      "webAssetSha256": "24b789e79e55017f927a0bf2a4775211acddcc5746acc2840aaa579c32bd8270"
+    },
+    {
+      "locale": "en",
+      "source": "AppStore/Screenshots/raw/en/02-dex.png",
+      "sourceSha256": "d4f0e4108fe8fd59e30979257ece173ce09cede3b539cd091f538773ed3b3a6f",
+      "webAsset": "public/apps/animaldex/en/dex.webp",
+      "webAssetSha256": "01ee51b3162b2f01f73ce01be55bd73861f41200f3e4ea7b82d69d0b3d31875a"
+    },
+    {
+      "locale": "en",
+      "source": "AppStore/Screenshots/raw/en/07-discovery.png",
+      "sourceSha256": "239cab82ed5ae5a3ee84ee2d87fb6738a9da5423c36cf104d470133e9fefc2b9",
+      "webAsset": "public/apps/animaldex/en/discovery.webp",
+      "webAssetSha256": "75103ec071324fc9b2f7de29ff428cf4b412fdde3f5b40081687ab2506b6a395"
+    },
+    {
+      "locale": "en",
+      "source": "AppStore/Screenshots/raw/en/06-profile.png",
+      "sourceSha256": "5dd6c46407571d48ef23c1b1de48d6c9fc62837df60412091d7c77851ef59e4c",
+      "webAsset": "public/apps/animaldex/en/profile.webp",
+      "webAssetSha256": "0d358f17588928f703488adb9cff1d412a42dade8b6696416a1ea3f38f1f7741"
+    },
+    {
+      "locale": "en",
+      "source": "AppStore/Screenshots/raw/en/04-map.png",
+      "sourceSha256": "94c34dccf5c2fd73525629c310fa3c4d151ec459e9761a5ec265be254f1fe21d",
+      "webAsset": "public/apps/animaldex/en/map.webp",
+      "webAssetSha256": "420f2cae2921c42cd5dcee586c6a39debafdd28279b04adafac8393319c0472f"
+    },
+    {
+      "locale": "en",
+      "source": "AppStore/Screenshots/raw/en/05-ranks.png",
+      "sourceSha256": "0e587e79fb65e68e4740d746eac4cc401fedf7be84d61457ce9fc26a39a9f04d",
+      "webAsset": "public/apps/animaldex/en/ranking.webp",
+      "webAssetSha256": "d17f7a658c68cc6704580c794ea73ab7eed115bebef589cb330a3e7ac28b51e5"
+    }
+  ],
+  "publicationApproval": {
+    "date": "2026-10-01",
+    "scope": "User explicitly approved publishing the current preview by commit and push, after seeing the FR/EN preview and being told the app screenshots were provisional. Current iOS screenshots remain a follow-up."
+  }
+}

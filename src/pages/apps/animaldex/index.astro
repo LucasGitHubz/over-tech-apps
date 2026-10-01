@@ -1,0 +1,912 @@
+---
+import LanguageSwitcher from "../../../components/LanguageSwitcher.astro";
+import AnimalDexScreenshot from "../../../components/AnimalDexScreenshot.astro";
+import { apps } from "../../../data/apps";
+
+const app = apps.find((item) => item.slug === "animaldex")!;
+const year = new Date().getFullYear();
+const storeFr = "https://apps.apple.com/fr/app/animaldex-attrape-les-tous/id6804027751";
+const storeEn = "https://apps.apple.com/us/app/animaldex-catch-them-all/id6804027751";
+const titleEn = "AnimalDex — Turn your walks into discoveries";
+const titleFr = "AnimalDex — Chaque balade, une découverte";
+const steps = [
+  {
+    title: "Observez autour de vous", titleEn: "Look a little closer",
+    description: "Un oiseau au parc, un insecte au jardin… Prenez une photo pour vous aider à découvrir son espèce.",
+    descriptionEn: "A bird in the park, an insect in the garden… Take a photo to help discover its species.",
+    icon: "M4 7h4l2-3h4l2 3h4v13H4Z M16 13a4 4 0 1 1-8 0 4 4 0 0 1 8 0",
+  },
+  {
+    title: "Gardez une trace", titleEn: "Make it a memory",
+    description: "Ajoutez vos découvertes à votre Dex. Vos photos donnent à chaque carte une histoire bien à vous.",
+    descriptionEn: "Add your discoveries to your Dex. Your photos give every card a story of its own.",
+    icon: "M7 3h13v16H7Z M4 6H2v16h14v-1 M10 7h7 M10 11h7 M10 15h4",
+  },
+  {
+    title: "Cultivez votre curiosité", titleEn: "Keep exploring",
+    description: "Collectionnez de nouvelles espèces, gagnez de l’XP et débloquez des badges au fil de vos sorties.",
+    descriptionEn: "Collect new species, earn XP and unlock badges as you explore.",
+    icon: "M8 3h8v8a4 4 0 0 1-8 0Z M8 5H4v3a4 4 0 0 0 4 4 M16 5h4v3a4 4 0 0 1-4 4 M12 15v6 M8 21h8",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-en={titleEn} data-fr={titleFr}>{titleEn}</title>
+    <meta name="description" content={app.descriptionEn} data-content-en={app.descriptionEn} data-content-fr={app.description} />
+    <meta name="theme-color" content="#0c1015" />
+    <meta name="apple-itunes-app" content="app-id=6804027751" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={titleEn} data-content-en={titleEn} data-content-fr={titleFr} />
+    <meta property="og:description" content={app.descriptionEn} data-content-en={app.descriptionEn} data-content-fr={app.description} />
+    <meta property="og:image" content="https://over-tech-apps.pages.dev/apps/animaldex/en/dex.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://over-tech-apps.pages.dev/apps/animaldex/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <div class="ambient ambient-one" aria-hidden="true"></div>
+      <div class="ambient ambient-two" aria-hidden="true"></div>
+      <nav class="nav" aria-label="Main navigation" data-aria-label-en="Main navigation" data-aria-label-fr="Navigation principale">
+        <a class="brand" href="/" aria-label="Over Tech Apps home" data-aria-label-en="Over Tech Apps home" data-aria-label-fr="Accueil Over Tech Apps">
+          <span class="brand-mark">Animal<span class="accent">Dex</span></span>
+        </a>
+        <div class="nav-actions">
+          <a class="nav-download" href="#download" data-en="Get the app" data-fr="Télécharger l’app">Get the app</a>
+          <LanguageSwitcher />
+        </div>
+      </nav>
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="availability"><span class="pulse" aria-hidden="true"></span><span data-en="Available on iPhone" data-fr="Disponible sur iPhone">Available on iPhone</span></div>
+            <h1><span data-en="Your next discovery is" data-fr="Votre prochaine découverte est">Your next discovery is</span>{" "}<span class="accent" data-en="just outside." data-fr="juste dehors.">just outside.</span></h1>
+            <p class="hero-description" data-en={app.descriptionEn} data-fr={app.description}>{app.descriptionEn}</p>
+            <div id="download" class="store-buttons">
+              <a class="store-button" href={storeEn} data-href-en={storeEn} data-href-fr={storeFr} target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 32 38" aria-hidden="true"><path fill="currentColor" d="M26.8 20.2c0-4.1 3.4-6.1 3.6-6.2-1.9-2.8-4.9-3.2-5.9-3.2-2.5-.3-4.9 1.5-6.2 1.5-1.3 0-3.3-1.5-5.4-1.4-2.8 0-5.4 1.6-6.8 4.1-2.9 5-.7 12.5 2.1 16.6 1.4 2 3.1 4.3 5.3 4.2 2.1-.1 2.9-1.4 5.5-1.4 2.6 0 3.3 1.4 5.5 1.3 2.3 0 3.8-2.1 5.2-4.1 1.6-2.3 2.2-4.6 2.3-4.7-.1 0-5.2-2-5.2-6.7ZM22.9 8.2c1.2-1.4 2-3.4 1.8-5.4-1.7.1-3.8 1.2-5 2.6-1.1 1.3-2.1 3.3-1.8 5.2 1.9.2 3.8-1 5-2.4Z" /></svg>
+                <span><small data-en="Download on the" data-fr="Télécharger dans l’">Download on the</small><strong>App Store</strong></span>
+              </a>
+              <a class="preview-link" href="#preview" data-en="Explore the app ↓" data-fr="Découvrir l’app ↓">Explore the app ↓</a>
+            </div>
+            <p class="free-note" data-en="Free download · Limited free scans · In-app purchases" data-fr="Téléchargement gratuit · Scans gratuits limités · Achats intégrés">Free download · Limited free scans · In-app purchases</p>
+          </div>
+          <div class="hero-visual">
+            <div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div>
+            <div class="phone phone-back"><AnimalDexScreenshot screenshot={app.screenshots[0]} loading="eager" /></div>
+            <div class="phone phone-front"><AnimalDexScreenshot screenshot={app.screenshots[1]} loading="eager" /></div>
+          </div>
+        </section>
+        <section class="proof" aria-label="Discover AnimalDex" data-aria-label-en="Discover AnimalDex" data-aria-label-fr="Découvrir AnimalDex">
+          <div class="proof-item"><span class="proof-number" data-en="Discover" data-fr="Découvrez">Discover</span><span data-en="the animals around you" data-fr="les animaux autour de vous">the animals around you</span></div>
+          <div class="proof-divider" aria-hidden="true"></div>
+          <div class="proof-item"><span class="proof-number" data-en="Collect" data-fr="Collectionnez">Collect</span><span data-en="cards with your own photos" data-fr="des cartes avec vos photos">cards with your own photos</span></div>
+          <div class="proof-divider" aria-hidden="true"></div>
+          <div class="proof-item"><span class="proof-number" data-en="Explore" data-fr="Explorez">Explore</span><span data-en="at your own pace" data-fr="à votre rythme">at your own pace</span></div>
+        </section>
+        <section class="how-it-works">
+          <div class="section-heading">
+            <p class="section-kicker" data-en="A LITTLE CURIOSITY GOES A LONG WAY" data-fr="LA CURIOSITÉ VOUS EMMÈNE LOIN">A LITTLE CURIOSITY GOES A LONG WAY</p>
+            <h2 data-en="Make every walk a discovery." data-fr="Chaque balade devient une découverte.">Make every walk a discovery.</h2>
+          </div>
+          <div class="steps">
+            {steps.map((step, index) => (<article>
+              <span class="step-number">0{index + 1}</span><div class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d={step.icon} /></svg></div>
+              <h3 data-en={step.titleEn} data-fr={step.title}>{step.titleEn}</h3><p data-en={step.descriptionEn} data-fr={step.description}>{step.descriptionEn}</p>
+            </article>))}
+          </div>
+        </section>
+        <section class="app-preview" id="preview" aria-labelledby="preview-title">
+          <div class="section-heading preview-heading">
+            <div><p class="section-kicker" data-en="INSIDE ANIMALDEX" data-fr="DANS ANIMALDEX">INSIDE ANIMALDEX</p><h2 id="preview-title" data-en="Your encounters. Your photos. Your Dex." data-fr="Vos rencontres. Vos photos. Votre Dex.">Your encounters. Your photos. Your Dex.</h2></div>
+            <p class="section-description" data-en="From the first photo to your explorer profile, keep a little of every adventure." data-fr="De la première photo à votre profil d’explorateur, gardez un souvenir de chaque aventure.">From the first photo to your explorer profile, keep a little of every adventure.</p>
+          </div>
+          <p class="gallery-hint" data-en="Swipe or use the arrow keys to explore all six screens." data-fr="Faites défiler ou utilisez les flèches du clavier pour voir les six écrans.">Swipe or use the arrow keys to explore all six screens.</p>
+          <div class="screenshots" role="region" tabindex="0" aria-label="AnimalDex screenshot gallery" data-aria-label-en="AnimalDex screenshot gallery" data-aria-label-fr="Galerie de captures AnimalDex">
+            {app.screenshots.map((screenshot) => (<figure>
+              <AnimalDexScreenshot screenshot={screenshot} />
+              <figcaption><strong data-en={screenshot.titleEn} data-fr={screenshot.title}>{screenshot.titleEn}</strong><span data-en={screenshot.descriptionEn} data-fr={screenshot.description}>{screenshot.descriptionEn}</span></figcaption>
+            </figure>))}
+          </div>
+          <p class="demo-note" data-en="App screens shown with demonstration photos and data." data-fr="Écrans de l’application présentés avec des photos et des données de démonstration.">App screens shown with demonstration photos and data.</p>
+        </section>
+        <section class="final-cta">
+          <div class="final-glow" aria-hidden="true"></div>
+          <p class="section-kicker" data-en="THERE IS MORE TO DISCOVER" data-fr="IL RESTE TANT À DÉCOUVRIR">THERE IS MORE TO DISCOVER</p>
+          <h2 data-en="Take your curiosity outside." data-fr="Emmenez votre curiosité dehors.">Take your curiosity outside.</h2>
+          <p data-en="AnimalDex is available on iPhone, in English and French. Start your collection on your next walk." data-fr="AnimalDex est disponible sur iPhone, en français et en anglais. Commencez votre collection lors de votre prochaine balade.">AnimalDex is available on iPhone, in English and French. Start your collection on your next walk.</p>
+          <div class="store-buttons centered"><a class="store-button" href={storeEn} data-href-en={storeEn} data-href-fr={storeFr} target="_blank" rel="noopener noreferrer"><span><small data-en="Download on the" data-fr="Télécharger dans l’">Download on the</small><strong>App Store</strong></span><span aria-hidden="true">↗</span></a></div>
+          <p class="purchase-note" data-en="Free scans are limited. Optional Premium purchases are available in the app." data-fr="Les scans gratuits sont limités. Des achats Premium facultatifs sont proposés dans l’application.">Free scans are limited. Optional Premium purchases are available in the app.</p>
+        </section>
+      </main>
+      <footer>
+        <a class="footer-brand" href="/">Over Tech Apps</a><p>© {year} AnimalDex</p>
+        <div class="footer-links">
+          <a href="/apps/animaldex/privacy" data-en="Privacy" data-fr="Confidentialité">Privacy</a><a href="/apps/animaldex/support" data-en="Support" data-fr="Assistance">Support</a><a href="/apps/animaldex/terms" data-en="Terms" data-fr="Conditions">Terms</a><a href="/apps/animaldex/remove-account" data-en="Delete account" data-fr="Supprimer mon compte">Delete account</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+    background: #0c1015;
+  }
+
+  :global(body) {
+    margin: 0;
+    color: #f5f7f0;
+    background: #0c1015;
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :global(::selection) {
+    color: #111508;
+    background: #ffb84c;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .site-shell {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .ambient {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(12px);
+  }
+
+  .ambient-one {
+    top: -400px;
+    right: -260px;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(255, 184, 76, 0.16), transparent 67%);
+  }
+
+  .ambient-two {
+    top: 560px;
+    left: -360px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.08), transparent 68%);
+  }
+
+  .nav,
+  main,
+  footer {
+    position: relative;
+    z-index: 1;
+    width: min(1200px, calc(100% - 48px));
+    margin-inline: auto;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px 0;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: "Manrope", sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  .brand-mark {
+    display: inline-flex;
+    font-size: 21px;
+  }
+
+
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .nav-download {
+    padding: 11px 18px;
+    border-radius: 999px;
+    color: #0d1106;
+    background: #ffb84c;
+    font-size: 14px;
+    font-weight: 700;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .nav-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 184, 76, 0.2);
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(460px, 0.85fr);
+    gap: 56px;
+    align-items: center;
+    min-height: 690px;
+    padding: 72px 0 96px;
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 660px;
+  }
+
+  .availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 8px 13px;
+    border: 1px solid rgba(255, 184, 76, 0.22);
+    border-radius: 999px;
+    color: #ffb84c;
+    background: rgba(255, 184, 76, 0.06);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ffb84c;
+    box-shadow: 0 0 0 5px rgba(255, 184, 76, 0.1), 0 0 15px rgba(255, 184, 76, 0.8);
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  h1 {
+    max-width: 760px;
+    font-size: clamp(48px, 6.2vw, 82px);
+    line-height: 1.01;
+    letter-spacing: -0.06em;
+    text-wrap: balance;
+  }
+
+  h1 span {
+    display: inline;
+  }
+
+  .accent {
+    color: #ffb84c;
+  }
+
+  .hero-description {
+    max-width: 610px;
+    margin: 26px 0 0;
+    color: #b0b7c1;
+    font-size: 18px;
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  .store-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 34px;
+    scroll-margin-top: 40px;
+  }
+
+  .store-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 188px;
+    min-height: 62px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 14px;
+    color: #fff;
+    background: #0c0d0b;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .store-button:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 184, 76, 0.55);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .store-button svg {
+    width: 28px;
+    height: 34px;
+    flex: 0 0 auto;
+  }
+
+
+  .store-button span {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+  }
+
+  .store-button small {
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .store-button strong {
+    font-family: "Manrope", sans-serif;
+    font-size: 19px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+  }
+
+  .free-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0 0;
+    color: #a1a8b3;
+    font-size: 13px;
+  }
+
+
+  .hero-visual {
+    position: relative;
+    min-height: 560px;
+    isolation: isolate;
+  }
+
+  .hero-visual::before {
+    content: "";
+    position: absolute;
+    inset: 14% 4% 6%;
+    z-index: -2;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 184, 76, 0.24), rgba(255, 184, 76, 0.04) 52%, transparent 70%);
+    filter: blur(10px);
+  }
+
+  .orbit {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    z-index: -1;
+    border: 1px solid rgba(255, 184, 76, 0.16);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .orbit-one {
+    width: 450px;
+    height: 450px;
+  }
+
+  .orbit-two {
+    width: 340px;
+    height: 340px;
+  }
+
+  .phone {
+    position: absolute;
+    overflow: hidden;
+    border: 5px solid #303844;
+    border-radius: 36px;
+    background: #111;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.62);
+  }
+
+  .phone :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .phone-back {
+    top: 64px;
+    left: 16px;
+    width: 230px;
+    aspect-ratio: 1000 / 2173;
+    transform: rotate(-8deg);
+    opacity: 0.84;
+  }
+
+  .phone-front {
+    top: 2px;
+    right: 22px;
+    width: 272px;
+    aspect-ratio: 1000 / 2173;
+    transform: rotate(5deg);
+    border-color: #424954;
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.72), 0 0 70px rgba(255, 184, 76, 0.08);
+  }
+
+
+
+
+
+
+
+  .proof {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+    margin-bottom: 132px;
+    padding: 28px 36px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .proof-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    color: #a1a8b3;
+    font-size: 13px;
+  }
+
+  .proof-number {
+    color: #f5f7f0;
+    font-family: "Manrope", sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+  }
+
+  .proof-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .how-it-works,
+  .app-preview {
+    padding-bottom: 132px;
+  }
+
+  .section-heading {
+    max-width: 740px;
+    margin-bottom: 48px;
+  }
+
+  .section-kicker {
+    margin: 0 0 14px;
+    color: #ffb84c;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+  }
+
+  h2 {
+    font-size: clamp(34px, 4.4vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .steps article {
+    position: relative;
+    min-height: 290px;
+    padding: 34px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
+    transition: transform 0.25s, border-color 0.25s;
+  }
+
+  .steps article:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 184, 76, 0.24);
+  }
+
+  .step-number {
+    position: absolute;
+    top: 24px;
+    right: 26px;
+    color: rgba(255, 255, 255, 0.16);
+    font-family: "Manrope", sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .step-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 46px;
+    border-radius: 15px;
+    color: #ffb84c;
+    background: rgba(255, 184, 76, 0.09);
+  }
+
+  .step-icon svg {
+    width: 25px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .steps h3 {
+    margin-bottom: 10px;
+    font-size: 21px;
+    letter-spacing: -0.035em;
+  }
+
+  .steps p {
+    margin: 0;
+    color: #a1a8b3;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .preview-heading {
+    display: grid;
+    grid-template-columns: 1fr minmax(220px, 310px);
+    gap: 64px;
+    align-items: end;
+    max-width: none;
+  }
+
+  .section-description {
+    margin: 0;
+    color: #a1a8b3;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .screenshots {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 48px 28px;
+  }
+
+  .screenshots figure {
+    margin: 0;
+  }
+
+  .screenshots :global(img) {
+    display: block;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 26px;
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.32);
+  }
+
+
+
+  .screenshots figcaption {
+    padding: 14px 7px 0;
+    color: #a1a8b3;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .final-cta {
+    position: relative;
+    margin: 38px 0 110px;
+    padding: 86px 40px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 184, 76, 0.17);
+    border-radius: 34px;
+    background: linear-gradient(150deg, rgba(255, 184, 76, 0.09), rgba(255, 255, 255, 0.025));
+    text-align: center;
+  }
+
+  .final-glow {
+    position: absolute;
+    right: 10%;
+    bottom: -280px;
+    left: 10%;
+    height: 420px;
+    border-radius: 50%;
+    background: rgba(255, 184, 76, 0.16);
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .final-cta > *:not(.final-glow) {
+    position: relative;
+  }
+
+  .final-cta h2 {
+    max-width: 750px;
+    margin-inline: auto;
+  }
+
+  .final-cta > p:not(.section-kicker) {
+    margin: 18px auto 0;
+    color: #b0b7c1;
+    font-size: 17px;
+  }
+
+  .store-buttons.centered {
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  footer {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 0 42px;
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+    color: #a1a8b3;
+    font-size: 13px;
+  }
+
+  footer p {
+    margin: 0;
+  }
+
+  .footer-brand {
+    color: #aeb5a8;
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-links a:hover {
+    color: #ffb84c;
+  }
+
+  @media (max-width: 980px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding-top: 54px;
+    }
+
+    .hero-copy {
+      max-width: 780px;
+    }
+
+    .hero-visual {
+      width: min(590px, 100%);
+      margin-inline: auto;
+    }
+
+    .proof {
+      margin-top: 20px;
+      margin-bottom: 100px;
+    }
+
+    .proof-item {
+      flex-direction: column;
+      gap: 3px;
+      text-align: center;
+    }
+
+    .steps article {
+      padding: 28px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .nav,
+    main,
+    footer {
+      width: min(100% - 32px, 1200px);
+    }
+
+    .nav-download {
+      display: none;
+    }
+
+    .hero {
+      min-height: 0;
+      padding: 46px 0 72px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 14vw, 66px);
+    }
+
+    .hero-description {
+      font-size: 17px;
+    }
+
+    .hero-visual {
+      min-height: 490px;
+      transform: scale(0.9);
+      transform-origin: center top;
+      margin-bottom: -45px;
+    }
+
+    .proof {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 30px 22px;
+    }
+
+    .proof-divider {
+      width: 70px;
+      height: 1px;
+      margin-inline: auto;
+    }
+
+    .steps {
+      grid-template-columns: 1fr;
+    }
+
+    .steps article {
+      min-height: 250px;
+    }
+
+    .preview-heading {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .screenshots {
+      display: flex;
+      gap: 16px;
+      width: calc(100% + 16px);
+      overflow-x: auto;
+      padding: 6px 16px 24px 0;
+      scroll-snap-type: x mandatory;
+    }
+
+    .screenshots figure {
+      flex: 0 0 74%;
+      scroll-snap-align: start;
+    }
+
+    .screenshots figure:nth-child(even) {
+      transform: none;
+    }
+
+    .final-cta {
+      margin-bottom: 72px;
+      padding: 64px 22px;
+    }
+
+    footer {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .footer-links {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .brand-mark {
+      font-size: 18px;
+    }
+
+    .hero {
+      padding-top: 34px;
+    }
+
+    .store-buttons {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .store-button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .hero-visual {
+      min-height: 435px;
+      transform: scale(0.79);
+      width: 126%;
+      margin-left: -13%;
+      margin-bottom: -90px;
+    }
+
+    .phone-back {
+      left: 9%;
+      width: 210px;
+    }
+
+    .phone-front {
+      right: 8%;
+      width: 242px;
+    }
+
+    .proof {
+      margin-bottom: 88px;
+    }
+
+    .how-it-works,
+    .app-preview {
+      padding-bottom: 96px;
+    }
+
+    .section-heading {
+      margin-bottom: 34px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  a:focus-visible, .screenshots:focus-visible { outline: 3px solid #ffb84c; outline-offset: 5px; }
+  .preview-link { align-self: center; padding: 18px 6px; color: #ffcf87; }
+  .screenshots :global(img) { height: auto; aspect-ratio: 1000 / 2173; }
+  .screenshots figcaption { padding: 20px 4px 0; text-align: left; }
+  .screenshots figcaption strong { display: block; color: #f5f7f0; font-size: 17px; line-height: 1.4; }
+  .screenshots figcaption span { display: block; margin-top: 8px; line-height: 1.6; }
+  .demo-note { margin: 32px 0 0; color: #a1a8b3; font-size: 13px; line-height: 1.6; }
+  .gallery-hint { display: none; color: #b0b7c1; font-size: 13px; line-height: 1.5; }
+  .final-cta > .purchase-note { font-size: 13px; line-height: 1.6; max-width: 540px; }
+  @media (max-width: 760px) {
+    .gallery-hint { display: block; }
+    .screenshots { overscroll-behavior-x: contain; }
+    .screenshots figure { flex-basis: min(80%, 320px); }
+    .preview-link { text-align: center; }
+  }
+</style>

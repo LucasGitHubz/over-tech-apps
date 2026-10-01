@@ -85,7 +85,7 @@ const year = new Date().getFullYear();
               <div class="featured-copy">
                 <div class="featured-meta">
                   {app.slug === featuredSlug && <span class="pill-featured" data-en="Featured" data-fr="À la une">Featured</span>}
-                  <span class="platform">{app.playStoreUrl ? "iOS · Android" : "iOS"} · {app.category}</span>
+                  <span class="platform">{app.playStoreUrl ? "iOS · Android" : "iOS"} · <span data-en={app.category} data-fr={app.categoryFr ?? app.category}>{app.category}</span></span>
                 </div>
                 <h3>{app.name}</h3>
                 <p class="featured-description" data-en={app.descriptionEn ?? app.description} data-fr={app.description}>{app.descriptionEn ?? app.description}</p>
@@ -99,8 +99,8 @@ const year = new Date().getFullYear();
               </div>
               <div class="featured-visual">
                 <img
-                  src={app.slug === featuredSlug ? "/apps/solemate-run/en/discover.png" : app.screenshots[0].src}
-                  data-src-en={app.slug === featuredSlug ? "/apps/solemate-run/en/discover.png" : app.screenshots[0].src}
+                  src={app.slug === featuredSlug ? "/apps/solemate-run/en/discover.png" : app.screenshots[0].srcEn ?? app.screenshots[0].src}
+                  data-src-en={app.slug === featuredSlug ? "/apps/solemate-run/en/discover.png" : app.screenshots[0].srcEn ?? app.screenshots[0].src}
                   data-src-fr={app.screenshots[0].src}
                   alt={`${app.name} — ${app.screenshots[0].titleEn ?? app.screenshots[0].title}`}
                   data-alt-en={`${app.name} — ${app.screenshots[0].titleEn ?? app.screenshots[0].title}`}

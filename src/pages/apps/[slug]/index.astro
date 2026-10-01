@@ -3,7 +3,8 @@ import LanguageSwitcher from "../../../components/LanguageSwitcher.astro";
 import { apps } from "../../../data/apps";
 
 export function getStaticPaths() {
-  return apps.map((app) => ({
+  // AnimalDex has its own landing page at the same public URL.
+  return apps.filter((app) => app.slug !== "animaldex").map((app) => ({
     params: { slug: app.slug },
     props: { app },
   }));

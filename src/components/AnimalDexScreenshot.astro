@@ -1,0 +1,17 @@
+---
+interface Props {
+  screenshot: { src: string; srcEn?: string; title: string; titleEn?: string };
+  loading?: "eager" | "lazy";
+}
+const { screenshot, loading = "lazy" } = Astro.props;
+---
+
+<img
+  src={screenshot.srcEn ?? screenshot.src}
+  data-src-en={screenshot.srcEn ?? screenshot.src}
+  data-src-fr={screenshot.src}
+  alt={`AnimalDex — ${screenshot.titleEn ?? screenshot.title}`}
+  data-alt-en={`AnimalDex — ${screenshot.titleEn ?? screenshot.title}`}
+  data-alt-fr={`AnimalDex — ${screenshot.title}`}
+  width="1000" height="2173" loading={loading} decoding="async"
+/>
