@@ -1,5 +1,6 @@
 ---
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+import SoleMateSocialMeta from "../components/SoleMateSocialMeta.astro";
 import { availableGuides } from "../lib/solemate-guides";
 import { apps } from "../data/apps";
 
@@ -28,14 +29,7 @@ const playStoreUrl = app.playStoreUrl;
     />
     <meta name="theme-color" content="#080b08" />
     <meta name="apple-itunes-app" content="app-id=6787297750" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="SoleMate Run — Find your perfect running shoes" />
-    <meta
-      property="og:description"
-      content="A few questions. A smarter shortlist. Download SoleMate Run free on iOS and Android."
-    />
-    <meta property="og:image" content="/apps/solemate-run/results.png" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <SoleMateSocialMeta />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

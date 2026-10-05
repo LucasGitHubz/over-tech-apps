@@ -1,5 +1,6 @@
 ---
 import LanguageSwitcher from "../../../components/LanguageSwitcher.astro";
+import SoleMateSocialMeta from "../../../components/SoleMateSocialMeta.astro";
 import { apps } from "../../../data/apps";
 
 export function getStaticPaths() {
@@ -38,6 +39,7 @@ const accentVars = `--accent-from: ${app.accent.from}; --accent-to: ${app.accent
     <meta name="viewport" content="width=device-width" />
     <title>{app.name} | Over Tech Apps</title>
     <meta name="description" content={app.description} />
+    {app.slug === "solemate-run" && <SoleMateSocialMeta path="/apps/solemate-run/" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

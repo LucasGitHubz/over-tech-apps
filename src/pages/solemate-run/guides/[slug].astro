@@ -1,6 +1,7 @@
 ---
 import { availableGuides } from "../../../lib/solemate-guides";
 import { apps } from "../../../data/apps";
+import SoleMateSocialMeta from "../../../components/SoleMateSocialMeta.astro";
 
 export function getStaticPaths() {
   return availableGuides().map((guide) => ({
@@ -26,12 +27,13 @@ const provider = import.meta.env.PUBLIC_SOLEMATE_APPLE_PROVIDER_TOKEN || "";
     <meta name="description" content={frontmatter.description} />
     <meta name="theme-color" content="#080b08" />
     {isPreview && <meta name="robots" content="noindex, nofollow" />}
-    <link rel="canonical" href={canonical} />
+    <SoleMateSocialMeta
+      title={frontmatter.title}
+      description={frontmatter.description}
+      path={canonical}
+      type="article"
+    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content={frontmatter.title} />
-    <meta property="og:description" content={frontmatter.description} />
-    <meta property="og:url" content={canonical} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
