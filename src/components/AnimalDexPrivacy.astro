@@ -1,0 +1,61 @@
+---
+const { email } = Astro.props;
+---
+<section>
+  <h2>AnimalDex for iOS and Android</h2>
+  <p>AnimalDex is published by Over Tech Apps. This policy covers the AnimalDex app on iOS and Android, including accounts, animal identification, collections, maps, social features, optional Premium purchases and rewarded ads.</p>
+</section>
+<section>
+  <h2>Accounts, collections and public profiles</h2>
+  <p>We use your email address, authentication information and account identifier to provide account access. Your explorer name, avatar, friend code, progress, badges and showcase support profiles, friends and leaderboards. Profiles and showcases can be viewed by other signed-in explorers; your account email and private capture photos are not part of your public profile.</p>
+  <p>Saved captures include the animal species, photos, dates and optional capture locations. These are stored on your device and synchronized with your account using Firebase Authentication, Cloud Firestore and Cloud Storage. Friend requests and friendships are stored to provide social features. Usage records and request identifiers enforce scan allowances and protect against replay or abuse.</p>
+</section>
+<section>
+  <h2>Camera, photos and animal identification</h2>
+  <p>You can use the camera or select a photo for identification. Standard identification runs on the device. Optional online identification sends the selected image through our Firebase Cloud Functions to Google's Gemini service to suggest an animal species. Recognition requests do not include the capture's coordinates. Provider processing is subject to the applicable Google service terms and privacy policies; on-device identification and cloud identification are separate processing paths.</p>
+  <p>On Android, ML Kit provides on-device image segmentation and may send technical metrics such as device and app information and processing statistics. The segmentation operation does not itself send the input image to Google. Images you save may separately be uploaded for account synchronization, or sent for online identification when you use that feature.</p>
+</section>
+<section>
+  <h2>Location and the World map</h2>
+  <p>Location permission is optional. It is used to record where an animal was captured, show your personal map, find nearby observations and obtain place names. You can refuse permission, choose approximate location where supported, or change access in your device settings. Google Maps and device location or geocoding services process information needed to provide their features, including technical information such as IP address and device details.</p>
+  <p>Saving a capture with a location also publishes its species, capture time and coordinates to the shared World map, which signed-in explorers can view. World pins do not display your account identifier, name or photo. Coordinates and timestamps can still reveal a location; absence of a name does not make location data anonymous. The map normally displays a 24-hour window, which is separate from server retention.</p>
+  <p>World records have an expiry set to 30 days after capture. Server cleanup may take additional time after expiry. New Android versions keep a private ownership link so these pins can also be removed during account deletion. Older versions did not keep this link; their World records cannot reliably be matched to a deleted account and are removed by the expiry process.</p>
+</section>
+<section>
+  <h2>Purchases and subscriptions</h2>
+  <p>Optional Premium purchases are processed by Apple on iOS and Google Play on Android. We do not receive or store your payment card details. RevenueCat uses your app account identifier, purchase records and entitlement status to validate purchases and provide access or restoration across supported devices.</p>
+  <p>You can manage or cancel subscriptions in the store account used to buy them. Deleting AnimalDex or its account does not cancel a store subscription. Store transaction records and information needed for purchase validation, restoration, fraud prevention or legal obligations may be retained by the store and RevenueCat according to their applicable policies.</p>
+</section>
+<section>
+  <h2>Rewarded ads and privacy choices</h2>
+  <p>Google AdMob provides optional rewarded ads. Its SDK may collect and share device or advertising identifiers, IP-based approximate location, ad interactions and diagnostic information to deliver and measure ads and prevent fraud. Google’s consent tools may also process technical information to determine and present applicable privacy choices.</p>
+  <p>Where required, a consent message is shown before ads can be requested. You can manage or withdraw applicable consent using the app's advertising privacy options. You can also adjust advertising settings on your device. Choosing not to view a rewarded ad does not grant its extra scan reward.</p>
+</section>
+<section>
+  <h2>Service providers and security</h2>
+  <p>The app uses Firebase for accounts, storage, synchronization and backend functions; Google or Apple sign-in for the corresponding login options; Google Gemini for online identification; Google Maps on Android and Apple Maps on iOS; ML Kit on Android; AdMob for rewarded ads; and RevenueCat for purchases. These services process relevant account, content, transaction or technical information for the features described above. The Android build does not integrate Firebase Analytics or Firebase Crashlytics.</p>
+  <p>Data is transferred using encrypted connections. Access rules restrict private account data and photos. Public profile information and World observations are shared as described above. Service providers may process data outside your country under their applicable terms and transfer safeguards. If you send support email, we receive your email address and the content you choose to provide.</p>
+</section>
+<section>
+  <h2>Retention and account deletion</h2>
+  <p>Account-linked data is retained while needed to provide your account and app features. You can delete your account in the Profile tab, or request deletion without the app using our <a href="/apps/animaldex/remove-account/">account deletion page</a>. Account deletion starts immediately after authentication is confirmed; backend cleanup of associated profiles, private captures, photos, friendships and usage records runs asynchronously and retries failures.</p>
+  <p>A restricted deletion marker containing the former account identifier and deletion time is retained to stop already-issued credentials or delayed requests from recreating deleted data. World records are handled as described in the World map section. Standard operational logs are retained for 30 days and required cloud audit logs for 400 days. Store transactions and provider-held records may be retained for the purchase, security or legal purposes described above. Copies that you export or share with other people are outside our control.</p>
+  <p>Email deletion requests are processed within 30 days after ownership verification. Contact us for access, correction or deletion of provider-held data associated with your account. Support correspondence is used to handle your request and any necessary follow-up.</p>
+</section>
+<section>
+  <h2>Your privacy rights</h2>
+  <p>Where applicable, you may request access, correction, deletion or a portable copy of your personal data, object to or restrict processing, or withdraw consent. We process data to provide the service, on the basis of applicable consent, and for security and legitimate operational purposes. To exercise your rights, contact <a href={`mailto:${email}`}>{email}</a>. You may also contact your local data protection authority.</p>
+</section>
+<section>
+  <h2>Children's privacy</h2>
+  <p>AnimalDex on Google Play is intended for users aged 13 and over. We do not knowingly collect personal information from children below the applicable minimum age. Contact us if you believe a child has provided personal information so that we can investigate and handle the account and data.</p>
+</section>
+<section>
+  <h2>Updates and contact</h2>
+  <p>Changes to this policy are published on this page with an updated date. For questions about AnimalDex or this policy, contact Over Tech Apps at <a href={`mailto:${email}`}>{email}</a>.</p>
+</section>
+<style>
+  h2 { margin-top: 40px; }
+  p { color: #cbd5e1; line-height: 1.7; }
+  a { color: #38bdf8; font-weight: 700; }
+</style>

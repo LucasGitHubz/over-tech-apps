@@ -1,5 +1,6 @@
 ---
 import { apps } from "../../../data/apps";
+import AnimalDexPrivacy from "../../../components/AnimalDexPrivacy.astro";
 
 export function getStaticPaths() {
   return apps.map((app) => ({
@@ -29,6 +30,7 @@ const lastUpdated =
       <h1>Privacy Policy</h1>
       <p class="muted">Last updated: {lastUpdated}</p>
 
+      {app.slug === "animaldex" ? (<AnimalDexPrivacy email={app.supportEmail} />) : (<>
       <section>
         <h2>{app.name}</h2>
         <p>
@@ -232,6 +234,7 @@ const lastUpdated =
           <a href={`mailto:${app.supportEmail}`}>{app.supportEmail}</a>
         </p>
       </section>
+      </>)}
     </main>
   </body>
 </html>

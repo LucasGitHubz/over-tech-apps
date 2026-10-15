@@ -35,7 +35,7 @@ const { app } = Astro.props;
           <a href={`mailto:${app.supportEmail}`}>{app.supportEmail}</a>
         </p>
         <p>
-          Please include the app name, your device model, iOS version, and a short
+          Please include the app name, your device model, {app.slug === "animaldex" ? "iOS or Android version" : "iOS version"}, and a short
           description of the issue.
         </p>
       </section>

@@ -9,7 +9,7 @@ export function getStaticPaths() {
 }
 
 const { app } = Astro.props;
-const lastUpdated = "May 31, 2026";
+const lastUpdated = app.slug === "animaldex" ? "October 16, 2026" : "May 31, 2026";
 ---
 
 <html lang="en">
@@ -33,6 +33,14 @@ const lastUpdated = "May 31, 2026";
           By using {app.name}, you agree to use the app responsibly and only for lawful purposes.
         </p>
       </section>
+
+      {app.slug === "animaldex" && (
+        <section>
+          <h2>Premium purchases</h2>
+          <p>AnimalDex offers optional monthly and annual subscriptions and a one-time lifetime unlock where available. The store displays the applicable price, billing period and any eligible trial before you confirm a purchase. Subscriptions renew automatically unless cancelled through the Apple or Google Play account used for the purchase. A lifetime unlock is a one-time purchase for access to the Premium features of the service.</p>
+          <p>You can restore eligible purchases through the app. Deleting the app or your AnimalDex account does not cancel a store subscription. Manage cancellation or refund requests through the store where you purchased. Your applicable consumer rights remain unchanged.</p>
+        </section>
+      )}
 
       <section>
         <h2>Availability</h2>

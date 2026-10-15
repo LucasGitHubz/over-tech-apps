@@ -50,7 +50,7 @@ const deletionEmailUrl = `mailto:${app.supportEmail}?subject=${deletionSubject}`
         </ol>
         <p>
           For security, the app may ask you to sign in again before completing the request.
-          In-app deletion is processed immediately after confirmation.
+          {app.slug === "animaldex" ? "Account deletion starts after confirmation. Associated server data is cleaned up asynchronously, with retries if a service is temporarily unavailable." : "In-app deletion is processed immediately after confirmation."}
         </p>
       </section>
 
@@ -101,8 +101,23 @@ const deletionEmailUrl = `mailto:${app.supportEmail}?subject=${deletionSubject}`
               may be retained.
             </>
           )}
-          Information may also be retained only for as long as required for
-          security, fraud prevention, or legal compliance.
+          {app.slug === "animaldex" ? (
+            <>
+              A restricted marker containing the former account identifier and deletion time is
+              retained to prevent delayed requests from recreating deleted account data.
+              New Android versions keep private links that allow their World map pins to be
+              removed with the account. Older World pins cannot reliably be matched to an
+              account and expire 30 days after capture, with additional time for server cleanup.
+              Standard operational logs are kept for 30 days and required audit logs for 400 days.
+              Store and RevenueCat transaction records may be retained for purchase validation,
+              restoration, fraud prevention or legal obligations. Contact us for related data requests.
+              Deleting your account does not cancel an Apple or Google Play subscription;
+              cancel it separately in the store where you purchased it.
+            </>
+          ) : (
+            <>Information may also be retained only for as long as required for
+            security, fraud prevention, or legal compliance.</>
+          )}
         </p>
       </section>
 
