@@ -1,6 +1,7 @@
 ---
 import { apps } from "../../../data/apps";
 import AnimalDexPrivacy from "../../../components/AnimalDexPrivacy.astro";
+import QuiEsTuPrivacy from "../../../components/QuiEsTuPrivacy.astro";
 
 export function getStaticPaths() {
   return apps.map((app) => ({
@@ -10,27 +11,28 @@ export function getStaticPaths() {
 }
 
 const { app } = Astro.props;
+const isQuiEsTu = app.slug === "qui-es-tu";
 const lastUpdated =
   app.privacy.lastUpdated ??
   (app.slug === "solemate-run" ? "August 27, 2026" : "May 31, 2026");
 ---
 
-<html lang="en">
+<html lang={isQuiEsTu ? "fr" : "en"}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Privacy Policy | {app.name}</title>
-    <meta name="description" content={`Privacy Policy for ${app.name}`} />
+    <title>{isQuiEsTu ? "Confidentialité" : "Privacy Policy"} | {app.name}</title>
+    <meta name="description" content={`${isQuiEsTu ? "Politique de confidentialité de" : "Privacy Policy for"} ${app.name}`} />
   </head>
 
   <body>
     <main class="page">
-      <a href={`/apps/${app.slug}`}>← Back to {app.name}</a>
+      <a href={`/apps/${app.slug}`}>{isQuiEsTu ? "← Retour à" : "← Back to"} {app.name}</a>
 
-      <h1>Privacy Policy</h1>
-      <p class="muted">Last updated: {lastUpdated}</p>
+      <h1>{isQuiEsTu ? "Confidentialité" : "Privacy Policy"}</h1>
+      <p class="muted">{isQuiEsTu ? "Dernière mise à jour :" : "Last updated:"} {lastUpdated}</p>
 
-      {app.slug === "animaldex" ? (<AnimalDexPrivacy email={app.supportEmail} />) : (<>
+      {isQuiEsTu ? (<QuiEsTuPrivacy email={app.supportEmail} />) : app.slug === "animaldex" ? (<AnimalDexPrivacy email={app.supportEmail} />) : (<>
       <section>
         <h2>{app.name}</h2>
         <p>

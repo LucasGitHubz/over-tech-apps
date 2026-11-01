@@ -16,10 +16,20 @@ export const apps = [
       rgb: "192, 132, 252",
     },
     privacy: {
-      collectsData: false,
+      collectsData: true,
       hasLogin: false,
-      dataTypes: [],
-      thirdPartyServices: [],
+      hasPurchases: true,
+      lastUpdated: "1er novembre 2026",
+      dataTypes: [
+        "Verified purchase information used to provide access to paid quizzes",
+        "Optional app analytics, crash diagnostics and notification identifiers",
+        "Technical information for non-personalized ads when enabled",
+      ],
+      thirdPartyServices: [
+        "Apple StoreKit and App Store Server API for purchases",
+        "Firebase for content delivery, optional analytics, crash reports and notifications",
+        "Google AdMob and UMP for advertising and consent choices",
+      ],
     },
     // [back, front] indexes into screenshots for the detail-page hero
     heroScreenshots: [3, 0],
